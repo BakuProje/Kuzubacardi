@@ -1,0 +1,724 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Bacardi PS</title>
+    <link rel="icon" href="https://files.catbox.moe/jtnwri.png" type="image/png">
+    <link rel="shortcut icon" href="https://files.catbox.moe/jtnwri.png" type="image/png">
+    <meta name="description" content="Bacardi PS - Tempat terbaik untuk bermain PS dan bersantai.">
+    <meta name="keywords" content="Bacardi PS, PlayStation, sewa PS, tempat main PS">
+    <meta name="author" content="Bacardi PS">
+    <meta property="og:title" content="Bacardi PS" />
+    <meta property="og:description" content="Tempat terbaik untuk bermain PS dan bersantai." />
+    <meta property="og:image" content="https://files.catbox.moe/jtnwri.png" />
+    <meta property="og:url" content="http://bacardips.netlify.app" /> 
+    <meta property="og:type" content="website" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+<body class="overflow-x-hidden relative">
+
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <div class="particles">
+    <canvas id="particles-canvas"></canvas>
+  </div>
+
+  <div class="max-w-[1440px] mx-auto flex flex-col min-h-screen relative z-10">
+    <nav class="glass fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300">
+      <div class="max-w-[1440px] mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img alt="Bacardi PS Logo" 
+               class="w-[120px] h-[60px] object-contain float" 
+               src="https://files.catbox.moe/prbsze.png"
+               style="border: none; box-shadow: none;"
+          />
+        </div>
+        
+    
+        <div class="hidden lg:block">
+          <div class="nav-container">
+            <ul class="flex items-center space-x-2 text-sm">
+              <li>
+                <a class="nav-link" href="#beranda" id="nav-beranda">
+                  BERANDA
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#statistik" id="nav-statistik">
+                  STATISTIK
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#CONNECT" id="nav-CONNECT">
+                  CONNECT
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#galeri" id="nav-galeri" onclick="showGallery(); return false;">
+                  GALERI
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#list" id="nav-list">
+                  LIST
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#donasi" id="nav-donasi" onclick="showDonasi(); return false;">
+                  DONASI
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <button class="lg:hidden text-white p-2 hover:scale-110 transition-all duration-300" id="mobile-menu-btn">
+          <div class="hamburger-menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </div>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden transform -translate-y-full transition-all duration-500" id="mobile-menu">
+      <div class="bg-gradient-to-b from-[#0f172a]/90 to-[#1e293b]/90 backdrop-blur-md h-full w-full p-6 transform transition-transform duration-500">
+        <div class="flex items-center justify-between mb-8">
+          <img alt="Bacardi PS Logo" 
+               class="w-[100px] h-[50px] object-contain" 
+               src="https://files.catbox.moe/prbsze.png"
+          />
+          <button class="text-white p-2 hover:rotate-90 transition-all duration-300" id="close-mobile-menu">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+
+      
+        <ul class="space-y-4">
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#beranda">
+              <i class="fas fa-home text-emerald-400"></i>
+              <span class="font-medium">BERANDA</span>
+            </a>
+          </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#statistik">
+              <i class="fas fa-chart-bar text-emerald-400"></i>
+              <span class="font-medium">STATISTIK</span>
+            </a>
+          </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#CONNECT">
+              <i class="fas fa-plug text-emerald-400"></i>
+              <span class="font-medium">CONNECT</span>
+            </a>
+          </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#galeri">
+              <i class="fas fa-images text-emerald-400"></i>
+              <span class="font-medium">GALERI</span>
+              </a>
+            </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#list">
+              <i class="fas fa-list text-emerald-400"></i>
+              <span class="font-medium">LIST</span>
+              </a>
+            </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#donasi" onclick="showDonasi(); toggleMenu(); return false;">
+              <i class="fas fa-gift text-emerald-400"></i>
+              <span class="font-medium">DONASI</span>
+            </a>
+          </li>
+          </ul>
+
+   
+        <div class="absolute bottom-8 left-0 right-0 px-6">
+          <div class="flex justify-center gap-4">
+            <a href="https://discord.gg/Z2kybabDg4" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-500/80 to-purple-600/80 backdrop-blur-sm hover:scale-110 transition-all duration-300">
+              <i class="fab fa-discord text-white text-xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@orenni" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-pink-500/80 to-rose-600/80 backdrop-blur-sm hover:scale-110 transition-all duration-300">
+              <i class="fab fa-tiktok text-white text-xl"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=6281527641306" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-sm hover:scale-110 transition-all duration-300">
+              <i class="fab fa-whatsapp text-white text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+        </div>
+        
+    <main class="flex flex-col lg:flex-row px-6 lg:px-12 py-20 lg:py-32 gap-12 mt-16">
+      <section class="max-w-[500px] flex flex-col justify-center space-y-8 relative" id="beranda">
+        <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+          <span class="gradient-text">#BACARDI</span>
+          <br/>
+          <span class="text-white roleplay-text">SERVER</span>
+        </h1>
+        
+        <div class="space-y-4 text-slate-300 text-base lg:text-lg leading-relaxed">
+          <p class="paragraph-animate">Merupakan Komunitas Game Online dari Growtopia Dan di Modifikasi menjadi jadi GTPS</p>
+          <p class="paragraph-animate">GTPS adalah Tidak berbeda dari growtopia RGT yang berbeda di gtps ini owner dari server nya bisa atur Economy agar player tidak kesusahan</p>
+          <p class="paragraph-animate">GTPS merupakan permainan Have fun dan tidak ada kata baper atau pun drama drama.</p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 button-animate">
+          <a href="https://discord.gg/Z2kybabDg4" target="_blank" rel="noopener noreferrer" 
+             class="btn-modern bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center justify-center gap-3 hover:scale-105 group">
+            <i class="fab fa-discord text-xl text-white group-hover:scale-110 transition-transform"></i>
+            DISCORD
+          </a>
+          <button id="btn-connect" 
+                  class="btn-modern bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 group">
+            <i class="fas fa-plug group-hover:rotate-12 transition-transform"></i>
+            CONNECT
+          </button>
+        </div>
+      </section>
+
+
+      <section class="flex-1 flex justify-center items-center relative button-animate">
+        <div class="relative">
+          <img alt="Indopride Roleplay logo" 
+               class="max-w-full max-h-[500px] rounded-2xl float" 
+               src="https://files.catbox.moe/jtnwri.png"
+               style="border: none; box-shadow: none;"
+          />
+          
+
+          <div class="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse shadow-lg"></div>
+          <div class="absolute -bottom-6 -left-6 w-6 h-6 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 animate-pulse delay-300 shadow-lg"></div>
+          <div class="absolute -top-6 -right-6 w-5 h-5 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 animate-pulse delay-500 shadow-lg"></div>
+          <div class="absolute -bottom-4 -right-4 w-7 h-7 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 animate-pulse delay-700 shadow-lg"></div>
+        </div>
+      </section>
+    </main>
+
+
+    <section id="statistik" class="max-w-7xl mx-auto my-20 px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="grid grid-cols-2 gap-6">
+          <div class="stat-card glass rounded-xl p-6 text-center relative overflow-hidden group hover:scale-105 transition-all duration-500">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-emerald-500/30 transition-all duration-500"></div>
+            <div class="flex flex-col items-center justify-center gap-3">
+              <span class="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform">10</span>
+              <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-users text-3xl text-emerald-400"></i>
+                <span class="text-slate-300 font-medium">Players</span>
+            </div>
+            </div>
+          </div>
+          
+       
+          <div class="stat-card glass rounded-xl p-6 text-center relative overflow-hidden group hover:scale-105 transition-all duration-500">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl group-hover:bg-blue-500/30 transition-all duration-500"></div>
+            <div class="flex flex-col items-center justify-center gap-3">
+              <span class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform">1</span>
+              <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-broadcast-tower text-3xl text-blue-400"></i>
+                <span class="text-slate-300 font-medium">Ba Live</span>
+            </div>
+            </div>
+          </div>
+          
+        
+          <div class="stat-card glass rounded-xl p-6 text-center relative overflow-hidden group hover:scale-105 transition-all duration-500">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl group-hover:bg-purple-500/30 transition-all duration-500"></div>
+            <div class="flex flex-col items-center justify-center gap-3">
+              <span class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform">0</span>
+              <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-shield-alt text-3xl text-purple-400"></i>
+                <span class="text-slate-300 font-medium">Police</span>
+            </div>
+            </div>
+          </div>
+          
+   
+          <div class="stat-card glass rounded-xl p-6 text-center relative overflow-hidden group hover:scale-105 transition-all duration-500">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-red-500/20 rounded-full blur-2xl group-hover:bg-red-500/30 transition-all duration-500"></div>
+            <div class="flex flex-col items-center justify-center gap-3">
+              <span class="text-4xl font-bold bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform">10</span>
+              <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-ban text-3xl text-red-400"></i>
+                <span class="text-slate-300 font-medium">Banned</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-stats glass rounded-xl p-8 relative overflow-hidden group">
+          <div class="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500"></div>
+          <h2 class="text-4xl font-bold mb-12 relative">
+            <span class="text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-400 bg-clip-text">#BACARDI PS</span>
+          </h2>
+          <div class="space-y-8 relative">
+            <div class="group/stat" data-max="100">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-300 font-medium group-hover/stat:text-emerald-400 transition-colors">OWNER</span>
+                <span class="text-emerald-400 stat-value font-bold" data-value="11">2</span>
+                </div>
+              <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div class="progress-bar h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-emerald-400 to-teal-500" style="width: 11%"></div>
+              </div>
+            </div>
+            
+            <div class="group/stat" data-max="100">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-300 font-medium group-hover/stat:text-blue-400 transition-colors">WAKIL</span>
+                <span class="text-blue-400 stat-value font-bold" data-value="28">1</span>
+                </div>
+              <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div class="progress-bar h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-blue-400 to-indigo-500" style="width: 28%"></div>
+              </div>
+            </div>
+            
+         
+            <div class="group/stat" data-max="100">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-300 font-medium group-hover/stat:text-purple-400 transition-colors">ASISTEN</span>
+                <span class="text-purple-400 stat-value font-bold" data-value="7">2</span>
+                </div>
+              <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div class="progress-bar h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-purple-400 to-pink-500" style="width: 7%"></div>
+              </div>
+            </div>
+            
+            <div class="group/stat" data-max="100">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-300 font-medium group-hover/stat:text-teal-400 transition-colors">DESAINER</span>
+                <span class="text-teal-400 stat-value font-bold" data-value="13">2</span>
+                </div>
+              <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div class="progress-bar h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-teal-400 to-cyan-500" style="width: 13%"></div>
+              </div>
+            </div>
+            
+            <div class="group/stat" data-max="1000">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-300 font-medium group-hover/stat:text-emerald-400 transition-colors">STAFF</span>
+                <span class="text-emerald-400 stat-value font-bold" data-value="685">1</span>
+                </div>
+              <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                <div class="progress-bar h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500" style="width: 68.5%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500"></div>
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3 relative">
+          <i class="fas fa-server text-transparent bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text"></i>
+          Server Status
+        </h2>
+        <div class="space-y-4 relative">
+          <div class="flex items-center justify-between group/server hover:bg-slate-800/30 p-4 rounded-lg transition-all duration-300">
+            <span class="text-slate-300 group-hover/server:text-emerald-400 transition-colors font-medium">BacardiPS</span>
+            <div class="flex items-center gap-4">
+              <div class="w-4 h-4 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full animate-pulse"></div>
+              <span class="text-emerald-400 font-bold">Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="CONNECT" class="max-w-7xl mx-auto my-20 px-6">
+      <h2 class="text-4xl font-bold text-emerald-400 mb-12 text-center">CARA LOGIN</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="connect-card glass rounded-xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fab fa-android text-emerald-400 text-3xl"></i>
+            ANDROID
+          </h3>
+          <div class="space-y-4 text-slate-300">
+            <p>1. Unduh <a href="https://sfile.mobi/2wAFRSHHTOQ" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">"Hosts GO"</a></p>
+            <p>2. Instal aplikasi dan buka "Hosts Editor"</p>
+            <p>3. Masukkan tautan berikut:</p>
+            <div class="bg-slate-800/50 p-4 rounded-lg border border-emerald-500/30 relative group">
+              <code class="text-emerald-300 font-mono text-sm break-all">https://gtpshost.com/BacardiPS-G.txt</code>
+              <button onclick="copyText('https://gtpshost.com/BacardiPS-G.txt')" class="absolute top-2 right-2 bg-emerald-500/80 hover:bg-emerald-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p>4. Ketuk "Download and Apply", lalu tekan "START"</p>
+          </div>
+        </div>
+
+
+        <div class="connect-card glass rounded-xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fab fa-apple text-emerald-400 text-3xl"></i>
+            iOS
+          </h3>
+          <div class="space-y-4 text-slate-300">
+            <p>1. Unduh aplikasi "Surge 5" dari App Store</p>
+            <p>2. Pilih "IMPORT" → "Download Profile from URL"</p>
+            <p>3. Masukkan URL berikut:</p>
+            <div class="bg-slate-800/50 p-4 rounded-lg border border-emerald-500/30 relative group">
+              <code class="text-emerald-300 font-mono text-sm break-all">https://ios.gtpshost.com/BacardiPS-G</code>
+              <button onclick="copyText('https://ios.gtpshost.com/BacardiPS-G')" class="absolute top-2 right-2 bg-emerald-500/80 hover:bg-emerald-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p>4. Tekan "OK" lalu "Done". Setujui kebijakan dan tekan "SETUP"</p>
+          </div>
+        </div>
+
+        <div class="connect-card glass rounded-xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fab fa-windows text-emerald-400 text-3xl"></i>
+            WINDOWS
+          </h3>
+          <div class="space-y-4 text-slate-300">
+            <p>1. Tekan ⊞ Win + R, ketik:</p>
+            <div class="bg-slate-800/50 p-4 rounded-lg border border-emerald-500/30 relative group">
+              <code class="text-emerald-300 font-mono text-sm">C:\Windows\System32\drivers\etc</code>
+              <button onclick="copyText('C:\\Windows\\System32\\drivers\\etc')" class="absolute top-2 right-2 bg-emerald-500/80 hover:bg-emerald-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p>2. Temukan file hosts, klik kanan, pilih Edit</p>
+            <p>3. Tambahkan baris berikut di akhir file:</p>
+            <div class="bg-slate-800/50 p-4 rounded-lg border border-emerald-500/30 relative group">
+              <code class="text-emerald-300 font-mono text-sm whitespace-pre-line">15.235.166.218 growtopia1.com
+15.235.166.218 growtopia2.com
+15.235.166.218 www.growtopia1.com
+15.235.166.218 www.growtopia2.com
+15.235.166.218 RvLnd.here</code>
+              <button onclick="copyText('15.235.166.218 growtopia1.com\n15.235.166.218 growtopia2.com\n15.235.166.218 www.growtopia1.com\n15.235.166.218 www.growtopia2.com\n15.235.166.218 RvLnd.here')" class="absolute top-2 right-2 bg-emerald-500/80 hover:bg-emerald-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p>4. Simpan file dan tutup editor</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-md mx-auto">
+        <div class="connect-card glass rounded-xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fab fa-apple text-emerald-400 text-3xl"></i>
+            MAC
+          </h3>
+          <div class="space-y-4 text-slate-300">
+            <p>1. Buka Finder → Go → Go to Folder</p>
+            <p>2. Ketik:</p>
+            <div class="bg-slate-800/50 p-4 rounded-lg border border-emerald-500/30 relative group">
+              <code class="text-emerald-300 font-mono text-sm">/private/etc/hosts</code>
+              <button onclick="copyText('/private/etc/hosts')" class="absolute top-2 right-2 bg-emerald-500/80 hover:bg-emerald-500 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p>3. Seret file hosts ke desktop untuk diedit</p>
+            <p>4. Tambahkan baris yang sama seperti Windows</p>
+            <p>5. Simpan dan pindahkan kembali ke folder asal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <button id="open-gallery" class="fixed opacity-0 w-0 h-0 p-0 m-0 overflow-hidden" onclick="showGallery()">
+      <span class="sr-only">Buka Galeri</span>
+    </button>
+
+    <div id="gallery-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="relative w-full h-full md:h-auto md:max-w-5xl mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-4 md:p-8 shadow-2xl transform scale-95 transition-all duration-300 border border-white/10 overflow-y-auto">
+        <div class="flex items-center justify-between mb-4 md:mb-8">
+          <h2 class="text-2xl md:text-4xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Galeri Video</h2>
+          <button id="close-gallery" class="text-white text-xl md:text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
+            <i class="fas fa-times"></i>
+    </button>
+        </div>
+
+        <div class="relative aspect-video mb-4 md:mb-8 bg-black/50 rounded-2xl overflow-hidden group shadow-2xl border border-white/5">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button id="prev-video" class="absolute left-2 md:left-4 bg-black/50 hover:bg-emerald-500 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xl md:text-2xl shadow-lg z-10 transition-all duration-300 opacity-0 group-hover:opacity-100 transform group-hover:-translate-x-2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <video id="carousel-video" controls class="w-full h-full object-contain">
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            
+
+            <button id="next-video" class="absolute right-2 md:right-4 bg-black/50 hover:bg-emerald-500 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-xl md:text-2xl shadow-lg z-10 transition-all duration-300 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-4 md:mb-8">
+          <div class="flex items-center gap-2 md:gap-4 w-full md:w-auto">
+            <button id="prev-video-btn" class="flex-1 md:flex-none px-4 md:px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
+              <i class="fas fa-step-backward group-hover:scale-110 transition-transform"></i>
+              <span class="hidden md:inline">Previous</span>
+            </button>
+            
+            <button id="next-video-btn" class="flex-1 md:flex-none px-4 md:px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+              <span class="hidden md:inline">Next</span>
+              <i class="fas fa-step-forward group-hover:scale-110 transition-transform"></i>
+            </button>
+
+
+            <button id="toggle-mute" class="flex-1 md:flex-none px-4 md:px-6 py-2 bg-emerald-500/20 hover:bg-emerald-500 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group hover:scale-105">
+              <i class="fas fa-volume-up group-hover:scale-110 transition-transform"></i>
+              <span class="hidden md:inline">Audio</span>
+            </button>
+          </div>
+          
+
+          <button id="open-upload-modal" class="w-full md:w-auto btn-modern bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 group">
+            <i class="fas fa-upload group-hover:rotate-12 transition-transform"></i>
+            <span>Upload Video</span>
+          </button>
+        </div>
+
+        <div class="w-full bg-slate-700/50 rounded-full h-1 overflow-hidden">
+          <div id="video-progress" class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 w-0 transition-all duration-300"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-upload" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-slate-900 rounded-2xl p-6 md:p-8 w-[90%] max-w-sm mx-auto relative shadow-2xl overflow-y-auto transform scale-95 transition-all duration-300">
+        <button id="close-upload-modal" class="absolute top-4 right-4 text-white text-xl md:text-2xl hover:text-emerald-400">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-6 text-center">Upload Video Baru</h2>
+        <div id="upload-drop" class="border-2 border-dashed border-slate-400 rounded-xl w-full h-36 md:h-48 flex flex-col items-center justify-center cursor-pointer bg-slate-800/60 hover:border-emerald-400 transition-all mb-4 relative">
+          <input type="file" id="video-upload" accept="video/*" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" />
+          <div class="flex flex-col items-center pointer-events-none">
+            <i class="fas fa-cloud-upload-alt text-3xl md:text-4xl text-slate-400 mb-2"></i>
+            <span class="text-slate-400 text-sm md:text-base text-center px-4">Drag & drop video atau klik disini</span>
+          </div>
+        </div>
+        <button id="btn-upload-video" class="w-full btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-all">
+          UPLOAD
+        </button>
+        <div id="upload-status" class="text-sm text-emerald-400 mt-2 text-center"></div>
+      </div>
+    </div>
+
+    <section id="list" class="max-w-7xl mx-auto px-6 py-20">
+      <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">List Price</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105">
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white">Role Price</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Staff</span>
+                <span class="text-emerald-400 font-bold">500k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Reseller</span>
+                <span class="text-emerald-400 font-bold">350k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Sdev</span>
+                <span class="text-emerald-400 font-bold">200k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Dev</span>
+                <span class="text-emerald-400 font-bold">100k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Mods</span>
+                <span class="text-emerald-400 font-bold">50k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Crole</span>
+                <span class="text-emerald-400 font-bold">20k</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-700">
+              <span class="text-xs text-slate-400"></span>
+            </div>
+            <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Role%20%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E&type=phone_number&app_absent=0" 
+               target="_blank" 
+               class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group">
+              <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+              Buy Role
+            </a>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 hover:scale-105">
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white">Title Price</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">sup + Ssup</span>
+                <span class="text-blue-400 font-bold">5k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Dr Title</span>
+                <span class="text-blue-400 font-bold">5k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Grow4Good</span>
+                <span class="text-blue-400 font-bold">8k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">mentor</span>
+                <span class="text-blue-400 font-bold">8k</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">of legend</span>
+                <span class="text-blue-400 font-bold">5k</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-700 opacity-0">
+              <span class="text-xs text-slate-400">* Staff not for sale</span>
+            </div>
+            <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Title%20%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E&type=phone_number&app_absent=0" 
+               target="_blank" 
+               class="btn-modern bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group">
+              <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+              Buy Title
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="donasi-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="relative w-full h-full md:h-auto md:max-w-lg mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-4 md:p-8 shadow-2xl transform scale-95 transition-all duration-300 border border-white/10 overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Donasi</h2>
+          <button id="close-donasi" class="text-white text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="space-y-8">
+          <div class="flex justify-center">
+            <div class="relative group cursor-pointer" id="qr-container">
+              <img src="./img/qr.jpg" alt="QR Code Donasi" class="w-48 h-48 object-cover rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105"/>
+              <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute bottom-2 right-2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <i class="fas fa-search-plus text-white"></i>
+              </div>
+            </div>
+          </div>
+
+
+          <a href="https://saweria.co/Kuzuroken" target="_blank" rel="noopener noreferrer" 
+             class="block w-full btn-modern bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 text-center group">
+            <div class="flex items-center justify-center gap-3">
+              <i class="fas fa-heart text-xl group-hover:scale-110 transition-transform"></i>
+              <span>Donasi via Saweria</span>
+            </div>
+          </a>
+
+          <p class="text-center text-slate-400 text-sm">Terima kasih atas dukungan Anda untuk BacardiPS!</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="qr-zoom-popup" class="fixed inset-0 bg-black/95 backdrop-blur-lg flex items-center justify-center z-[10000] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="relative transform scale-95 transition-all duration-300">
+        <button id="close-qr-zoom" class="absolute -top-12 right-0 text-white text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
+          <i class="fas fa-times"></i>
+        </button>
+        <img src="./img/qr.jpg" alt="QR Code Donasi" class="max-h-[80vh] rounded-xl shadow-2xl"/>
+      </div>
+    </div>
+  </div>
+  <div id="copy-notification" class="fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex items-center gap-3">
+      <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+      <span class="text-white font-medium">Teks berhasil disalin!</span>
+    </div>
+  </div>
+  <footer class="mt-20 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2 space-y-6">
+          <img alt="Bacardi PS Logo" 
+               src="https://files.catbox.moe/prbsze.png"
+               class="w-[180px] h-[90px] object-contain float" 
+          />
+          <p class="text-slate-400 leading-relaxed">
+            BacardiPS adalah komunitas GTPS yang berfokus pada pengalaman bermain yang menyenangkan dan membangun komunitas yang positif.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="https://discord.com/invite/Z2kybabDg4" 
+               target="_blank" 
+               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 hover:scale-110 transition-all duration-300">
+              <i class="fab fa-discord text-white"></i>
+            </a>
+            <a href="https://www.tiktok.com/@orenni" 
+               target="_blank" 
+               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-rose-500 to-pink-600 hover:scale-110 transition-all duration-300">
+              <i class="fab fa-tiktok text-white"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=6281527641306" 
+               target="_blank" 
+               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-110 transition-all duration-300">
+              <i class="fab fa-whatsapp text-white"></i>
+            </a>
+          </div>
+        </div>
+
+      
+        <div class="space-y-6">
+          <h3 class="text-lg font-semibold text-white">Kontak</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+              <i class="fas fa-envelope text-emerald-400"></i>
+              <a href="mailto:bacardisolid@gmail.com" target="_blank" class="hover:text-emerald-400 transition-colors">
+                bacardisolid@gmail.com
+              </a>
+            </li>
+            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+              <i class="fab fa-discord text-emerald-400"></i>
+              <a href="https://discord.com/invite/Z2kybabDg4" target="_blank" class="hover:text-emerald-400 transition-colors">
+                BacardiPS Official
+              </a>
+            </li>
+            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+              <i class="fab fa-whatsapp text-emerald-400"></i>
+              <a href="https://api.whatsapp.com/send?phone=6281527641306&text=Welcome%20To%20Bacardi%20Support%0A%0AGrowid%3A%0ATanggal%3A%0AMasalah%3A" target="_blank" class="hover:text-emerald-400 transition-colors">
+                6281527641306
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="pt-8 border-t border-slate-800">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-slate-400 text-sm text-center md:text-left">
+            © 2025 BacardiPS. All rights reserved.
+          </p>
+          <div class="flex items-center gap-6">
+            <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Terms of Service</a>
+            <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
