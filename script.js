@@ -1,28 +1,3 @@
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = themeToggle.querySelector('i');
-
-const savedTheme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
-
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
-  
-  themeToggle.classList.add('animate-spin');
-  setTimeout(() => themeToggle.classList.remove('animate-spin'), 500);
-}
-
-function updateThemeIcon(theme) {
-  themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-}
-
-themeToggle.addEventListener('click', toggleTheme);
-
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
@@ -228,7 +203,7 @@ async function fetchServerStats() {
 }
 
 setInterval(fetchServerStats, 300000);
-fetchServerStats();
+fetchServerStats(); // Initial fetch
 
 function updateProgressBar(element) {
   const value = parseInt(element.getAttribute('data-value'));
@@ -424,6 +399,7 @@ document.getElementById('donasi-popup').addEventListener('click', (e) => {
     hideDonasi();
   }
 });
+
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
@@ -648,6 +624,57 @@ window.addEventListener('keydown', (e) => {
     hideQrZoom();
   }
 });
+
+
+function togglePopup() {
+const popup = document.getElementById('bacardiPopup');
+popup.classList.toggle('hidden');
+}
+
+function toggleAppHost() {
+const modal = document.getElementById('appHostModal');
+modal.classList.toggle('hidden');
+}
+
+function copyText(text, label = "Teks") {
+navigator.clipboard.writeText(text).then(() => {
+showNotification(`${label} berhasil disalin!`);
+}).catch(() => {
+showNotification(`Gagal menyalin ${label}.`);
+});
+}
+
+function showNotification(message) {
+const notif = document.createElement('div');
+notif.className = "fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform transition-all duration-300 z-[9999]";
+notif.innerHTML = `
+<div class="flex items-center gap-3">
+  <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+  <span class="text-white font-medium">${message}</span>
+</div>`;
+document.body.appendChild(notif);
+setTimeout(() => notif.remove(), 3000);
+}
+
+document.getElementById('download-host')?.addEventListener('click', () => {
+const content = `15.235.166.218 growtopia1.com
+15.235.166.218 growtopia2.com
+15.235.166.218 www.growtopia1.com
+15.235.166.218 www.growtopia2.com
+15.235.166.218 RvLnd.here`;
+const blob = new Blob([content], { type: 'text/plain' });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'BacardiPS.txt';
+document.body.appendChild(a);
+a.click();
+setTimeout(() => {
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}, 0);
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const galleryLinks = document.querySelectorAll('a[href="#galeri"]');
