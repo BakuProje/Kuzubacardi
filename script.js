@@ -174,7 +174,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Optimasi scroll handler
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -187,7 +187,6 @@ function debounce(func, wait) {
   };
 }
 
-// Optimasi intersection observer
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '50px',
@@ -206,7 +205,7 @@ const handleIntersection = entries => {
 
 const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-// Optimasi animasi scroll
+
 const smoothScroll = (target, duration) => {
   const targetPosition = target.getBoundingClientRect().top;
   const startPosition = window.pageYOffset;
@@ -622,40 +621,38 @@ const qrZoomPopup = document.getElementById('qr-zoom-popup');
 const closeQrZoom = document.getElementById('close-qr-zoom');
 
 function showQRZoom(imgSrc) {
-  const zoomOverlay = document.createElement('div');
-  zoomOverlay.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-[99999]';
-  
-  zoomOverlay.innerHTML = `
-    <div class="relative max-w-lg w-full bg-slate-900 rounded-2xl p-6 transform scale-95 transition-all duration-300">
-      <button class="absolute top-2 right-2 text-white/80 hover:text-white transition-colors" onclick="event.stopPropagation()">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-      <img src="${imgSrc}" alt="QR Code Donasi" class="w-full h-auto rounded-lg">
-      <div class="text-center mt-4 text-slate-400">Scan QR code untuk melakukan donasi</div>
-    </div>
-  `;
+  const popup = document.getElementById('qr-zoom-popup');
+  const image = popup.querySelector('img');
   
 
-  zoomOverlay.addEventListener('click', (e) => {
-    if (e.target === zoomOverlay || e.target.closest('button')) {
-      e.stopPropagation(); 
-      zoomOverlay.classList.add('opacity-0');
+  image.src = imgSrc;
+  
+
+  popup.style.display = 'flex';
+  setTimeout(() => {
+    popup.style.opacity = '1';
+    popup.style.pointerEvents = 'auto';
+    popup.querySelector('div').style.transform = 'scale(1)';
+  }, 10);
+
+  document.getElementById('close-qr-zoom')?.addEventListener('click', () => {
+    popup.style.opacity = '0';
+    popup.style.pointerEvents = 'none';
+    popup.querySelector('div').style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300);
+  });
+
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.opacity = '0';
+      popup.style.pointerEvents = 'none';
+      popup.querySelector('div').style.transform = 'scale(0.95)';
       setTimeout(() => {
-        zoomOverlay.remove();
+        popup.style.display = 'none';
       }, 300);
     }
-  });
-  
-
-  zoomOverlay.querySelector('.relative').addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-  
-
-  document.body.appendChild(zoomOverlay);
-  requestAnimationFrame(() => {
-    zoomOverlay.querySelector('div').classList.remove('scale-95');
-    zoomOverlay.querySelector('div').classList.add('scale-100');
   });
 }
 
@@ -893,12 +890,18 @@ const chatMessages = document.getElementById('chat-messages');
 const aiChatForm = document.getElementById('ai-chat-form');
 const aiChatInput = document.getElementById('ai-chat-input');
 
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = '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';
 
 function toggleAiChat() {
+  const aiChatContainer = document.getElementById('ai-chat-container');
+  const aiChatButton = document.getElementById('ai-chat-button').querySelector('button');
+  
   aiChatContainer.classList.toggle('active');
+  
   if (aiChatContainer.classList.contains('active')) {
-    aiChatInput.focus();
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
   }
 }
 
@@ -912,7 +915,7 @@ function addMessage(content, isUser = false) {
         `<div class="w-full h-full flex items-center justify-center">
           <i class="fas fa-user text-white"></i>
          </div>` : 
-        `<img src="https://files.catbox.moe/jtnwri.png" alt="BacardiPS AI" class="w-full h-full object-cover">`
+        `<img src="https://files.catbox.moe/prbsze.png" alt="BacardiPS AI" class="w-full h-full object-cover">`
       }
     </div>
     <div class="flex-1 ${isUser ? 'user-message' : 'ai-message'} rounded-xl p-4 text-slate-300">
@@ -1119,60 +1122,63 @@ async function handleSubmit(e) {
   }
   
   try {
-
     const typingDiv = document.createElement('div');
     typingDiv.className = 'flex items-center gap-2 text-slate-400 text-sm p-3';
     typingDiv.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> AI sedang mengetik...';
     chatMessages.appendChild(typingDiv);
     
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyARS83rzvAG5JqjPuoRtByjKEZgs8J3V3w", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "HTTP-Referer": "https://bacardips.netlify.app/",
-        "X-Title": "BacardiPS",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "model": "deepseek/deepseek-r1:free",
-        "messages": [
+        "contents": [
           {
-            "role": "system",
-            "content": "Kamu adalah asisten AI BacardiPS yang membantu pemain dengan informasi seputar GTPS dan game Growtopia. Selalu berikan respons yang ramah dan helpful."
-          },
-          {
-            "role": "user",
-            "content": message
+            "parts": [
+              {
+                "text": `Kamu adalah asisten AI BacardiPS yang membantu pemain dengan informasi seputar GTPS dan game Growtopia. Berikan respons dalam bahasa Indonesia yang ramah, helpful, dan detail. Gunakan format yang rapi dengan emoji dan formatting yang sesuai. Pertanyaan user: ${message}`
+              }
+            ]
           }
         ]
       })
     });
 
-
-    chatMessages.removeChild(typingDiv);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
     const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
+    chatMessages.removeChild(typingDiv);
     
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+      const aiResponse = data.candidates[0].content.parts[0].text;
+      addMessage(aiResponse);
+    } else {
+      throw new Error('Format respons tidak valid');
+    }
 
-    addMessage(aiResponse);
   } catch (error) {
     console.error('Error:', error);
-    addMessage('Maaf, terjadi kesalahan. Silakan coba lagi nanti.');
+    chatMessages.removeChild(typingDiv);
+    addMessage('Maaf, terjadi kesalahan dalam memproses permintaan Anda. Silakan coba lagi nanti. 🙏');
   }
 }
 
 aiChatButton.addEventListener('click', toggleAiChat);
-closeAiChat.addEventListener('click', toggleAiChat);
+closeAiChat.addEventListener('click', (e) => {
+  e.stopPropagation(); 
+  toggleAiChat();
+});
 aiChatForm.addEventListener('submit', handleSubmit);
 
 
-document.addEventListener('click', (e) => {
-  if (!aiChatContainer.contains(e.target) && !aiChatButton.contains(e.target)) {
-    aiChatContainer.classList.remove('active');
+aiChatContainer.addEventListener('click', (e) => {
+  if (e.target === aiChatContainer) {
+    toggleAiChat();
   }
 });
-
 
 function downloadHost() {
   const content = `15.235.166.218 growtopia1.com
@@ -1196,3 +1202,9 @@ function downloadHost() {
   
   showNotification('Host berhasil didownload!');
 }
+
+
+document.getElementById('qr-container')?.addEventListener('click', () => {
+  const qrImage = document.querySelector('#qr-container img');
+  showQRZoom(qrImage.src);
+});
