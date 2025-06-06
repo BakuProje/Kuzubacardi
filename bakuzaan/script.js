@@ -114,12 +114,61 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
+document.querySelectorAll('.input-group input').forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('focused');
+    });
+});
+
+
+function showLoading() {
+    const loginBtn = document.getElementById('login-btn');
+    loginBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Logging in...';
+    loginBtn.disabled = true;
+}
+
+function hideLoading() {
+    const loginBtn = document.getElementById('login-btn');
+    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+    loginBtn.disabled = false;
+}
+
 document.getElementById('login-btn').addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
+    showLoading();
+    
     firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+
+            document.querySelector('#login-form > div').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                document.getElementById('login-form').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('login-form').style.display = 'none';
+                }, 300);
+            }, 200);
+        })
         .catch((error) => {
-            alert('Login gagal: ' + error.message);
+            hideLoading();
+            showNotification(error.message, 'error');
+        });
+});
+
+document.getElementById('logout-btn')?.addEventListener('click', () => {
+    firebase.auth().signOut()
+        .then(() => {
+            document.getElementById('login-form').style.display = 'flex';
+            document.getElementById('login-form').style.opacity = '1';
+            document.getElementById('admin-panel').style.display = 'none';
+            showNotification('Berhasil logout!', 'success');
+        })
+        .catch((error) => {
+            showNotification('Gagal logout: ' + error.message, 'error');
         });
 });

@@ -250,6 +250,7 @@ function updateStat(selector, newValue) {
   }
 }
 
+
 function updateActiveSection() {
   const sections = document.querySelectorAll('section[id]');
   const navHeight = document.querySelector('nav').offsetHeight;
@@ -299,105 +300,11 @@ document.querySelectorAll('.social-button-fixed').forEach(button => {
   });
 });
 
-
 let videoList = [
-  'https://files.catbox.moe/0szmse.mp4', 
-  'https://files.catbox.moe/yujrb0.mp4',
-  'https://files.catbox.moe/9clong.mp4'
+  './img/video1.mp4',
+  './img/video2.mp4',
+  './img/video3.mp4'
 ];
-
-
-async function handleVideoUpload(file) {
-  try {
-    const formData = new FormData();
-    formData.append('fileToUpload', file);
-    
-
-    const uploadStatus = document.getElementById('upload-status');
-    uploadStatus.textContent = 'Mengupload video...';
-    uploadStatus.className = 'text-emerald-400 mt-2 text-center';
-
-    const response = await fetch('https://catbox.moe/user/api.php', {
-      method: 'POST',
-      body: formData
-    });
-
-    if (!response.ok) throw new Error('Upload gagal');
-    
-    const videoUrl = await response.text();
-    
-
-    videoList.push(videoUrl);
- 
-    uploadStatus.textContent = 'Video berhasil diupload!';
-    setTimeout(() => {
-      hideUploadModal();
-      showVideo(videoList.length - 1); 
-    }, 1500);
-    
-  } catch (error) {
-    console.error('Error:', error);
-    document.getElementById('upload-status').textContent = 'Gagal mengupload video. Silakan coba lagi.';
-    document.getElementById('upload-status').className = 'text-red-400 mt-2 text-center';
-  }
-}
-
-
-document.getElementById('video-upload').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  
-
-  if (file.size > 100 * 1024 * 1024) {
-    alert('Ukuran file terlalu besar. Maksimal 100MB');
-    return;
-  }
-  
-  if (!file.type.startsWith('video/')) {
-    alert('File harus berupa video');
-    return;
-  }
-  
-  handleVideoUpload(file);
-});
-
-
-const dropZone = document.getElementById('upload-drop');
-
-dropZone.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  dropZone.classList.add('border-emerald-400');
-});
-
-dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('border-emerald-400');
-});
-
-dropZone.addEventListener('drop', (e) => {
-  e.preventDefault();
-  dropZone.classList.remove('border-emerald-400');
-  
-  const file = e.dataTransfer.files[0];
-  if (!file) return;
-  
-  if (file.size > 100 * 1024 * 1024) {
-    alert('Ukuran file terlalu besar. Maksimal 100MB');
-    return;
-  }
-  
-  if (!file.type.startsWith('video/')) {
-    alert('File harus berupa video');
-    return;
-  }
-  
-  handleVideoUpload(file);
-});
-
-
-document.getElementById('btn-upload-video').addEventListener('click', () => {
-  document.getElementById('video-upload').click();
-});
-
 let currentVideo = 0;
 const carouselVideo = document.getElementById('carousel-video');
 const prevBtn = document.getElementById('prev-video');
@@ -527,12 +434,27 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (videoList.length > 0) {
+async function loadFirebaseVideos() {
+  try {
+    const listRef = storage.ref('videos');
+    const res = await listRef.listAll();
+    const urls = [];
+    for (const itemRef of res.items) {
+      const url = await itemRef.getDownloadURL();
+      urls.push(url);
+    }
+    videoList = [
+      './img/video1.mp4',
+      './img/video2.mp4',
+      './img/video3.mp4',
+      ...urls
+    ];
+    showVideo(0);
+  } catch (err) {
+    console.error("Error loading Firebase videos:", err);
     showVideo(0);
   }
-});
+}
 
 const openUploadModal = document.getElementById('open-upload-modal');
 const modalUpload = document.getElementById('modal-upload');
@@ -651,9 +573,11 @@ function showVideo(idx) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadFirebaseVideos().then(() => {
     if (videoList.length > 0) {
       showVideo(0);
     }
+  });
 });
 
 const donasiPopup = document.getElementById('donasi-popup');
@@ -711,9 +635,10 @@ function showQRZoom(imgSrc) {
     </div>
   `;
   
+
   zoomOverlay.addEventListener('click', (e) => {
     if (e.target === zoomOverlay || e.target.closest('button')) {
-      e.stopPropagation();
+      e.stopPropagation(); 
       zoomOverlay.classList.add('opacity-0');
       setTimeout(() => {
         zoomOverlay.remove();
@@ -721,10 +646,12 @@ function showQRZoom(imgSrc) {
     }
   });
   
+
   zoomOverlay.querySelector('.relative').addEventListener('click', (e) => {
     e.stopPropagation();
   });
   
+
   document.body.appendChild(zoomOverlay);
   requestAnimationFrame(() => {
     zoomOverlay.querySelector('div').classList.remove('scale-95');
@@ -733,7 +660,7 @@ function showQRZoom(imgSrc) {
 }
 
 function togglePopup() {
-const popup = document.getElementById('bacardiPopup');
+  const popup = document.getElementById('bacardiPopup');
   popup.innerHTML = `
   <div class="bg-slate-900 rounded-2xl p-8 max-w-sm w-full shadow-2xl border border-emerald-500/30 relative">
     <button onclick="togglePopup()" class="absolute top-4 right-4 text-white hover:text-red-400 transition-transform hover:rotate-90 duration-300">
@@ -769,51 +696,51 @@ const popup = document.getElementById('bacardiPopup');
       </a>
     </div>
   </div>`;
-popup.classList.toggle('hidden');
+  popup.classList.toggle('hidden');
 }
 
 function toggleAppHost() {
-const modal = document.getElementById('appHostModal');
-modal.classList.toggle('hidden');
+  const modal = document.getElementById('appHostModal');
+  modal.classList.toggle('hidden');
 }
 
 function copyText(text, label = "Teks") {
-navigator.clipboard.writeText(text).then(() => {
-showNotification(`${label} berhasil disalin!`);
-}).catch(() => {
-showNotification(`Gagal menyalin ${label}.`);
-});
+  navigator.clipboard.writeText(text).then(() => {
+    showNotification(`${label} berhasil disalin!`);
+  }).catch(() => {
+    showNotification(`Gagal menyalin ${label}.`);
+  });
 }
 
 function showNotification(message) {
-const notif = document.createElement('div');
-notif.className = "fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform transition-all duration-300 z-[9999]";
-notif.innerHTML = `
-<div class="flex items-center gap-3">
-  <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
-  <span class="text-white font-medium">${message}</span>
-</div>`;
-document.body.appendChild(notif);
-setTimeout(() => notif.remove(), 3000);
+  const notif = document.createElement('div');
+  notif.className = "fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform transition-all duration-300 z-[9999]";
+  notif.innerHTML = `
+  <div class="flex items-center gap-3">
+    <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+    <span class="text-white font-medium">${message}</span>
+  </div>`;
+  document.body.appendChild(notif);
+  setTimeout(() => notif.remove(), 3000);
 }
 
 document.getElementById('download-host')?.addEventListener('click', () => {
-const content = `15.235.166.218 growtopia1.com
+  const content = `15.235.166.218 growtopia1.com
 15.235.166.218 growtopia2.com
 15.235.166.218 www.growtopia1.com
 15.235.166.218 www.growtopia2.com
 15.235.166.218 RvLnd.here`;
-const blob = new Blob([content], { type: 'text/plain' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = 'BacardiPS.txt';
-document.body.appendChild(a);
-a.click();
-setTimeout(() => {
-document.body.removeChild(a);
-URL.revokeObjectURL(url);
-}, 0);
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'BacardiPS.txt';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 0);
 });
 
 
@@ -888,7 +815,77 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// AI Chat Implementation
+  const firebaseConfig = {
+    apiKey: "AIzaSyAy0DhNhsNpGYFg7YJ1f6kvUYcDw08-GGk",
+    authDomain: "bacardips-4e2c0.firebaseapp.com",
+    databaseURL: "https://bacardips-4e2c0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "bacardips-4e2c0",
+    storageBucket: "bacardips-4e2c0.firebasestorage.app",
+    messagingSenderId: "655282827033",
+    appId: "1:655282827033:web:9656b7d6bd60e59de65f88",
+    measurementId: "G-19NSYW9DSP"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  function updateStats(data) {
+    console.log('Received data:', data);
+
+    document.querySelectorAll('.stat-card').forEach(card => {
+      const type = card.getAttribute('data-type');
+      if (type && data[type] !== undefined) {
+        const valueElement = card.querySelector('.text-4xl');
+        if (valueElement) {
+          valueElement.textContent = data[type];
+        }
+      }
+    });
+
+    document.querySelectorAll('.group\\/stat').forEach(stat => {
+      const type = stat.getAttribute('data-type');
+      if (type && data[type] !== undefined) {
+        const valueElement = stat.querySelector('.stat-value');
+        if (valueElement) {
+          valueElement.textContent = data[type];
+          valueElement.setAttribute('data-value', data[type]);
+        }
+      }
+    });
+
+    const serverStatus = document.querySelector('.group\\/server');
+    if (serverStatus && data.serverStatus) {
+      const statusIcon = serverStatus.querySelector('.w-4');
+      const statusText = serverStatus.querySelector('span:last-child');
+      
+      if (statusIcon && statusText) {
+        switch(data.serverStatus) {
+          case 'online':
+            statusIcon.className = 'w-4 h-4 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full animate-pulse';
+            statusText.textContent = 'Online';
+            statusText.className = 'text-emerald-400 font-bold';
+            break;
+          case 'maintenance':
+            statusIcon.className = 'w-4 h-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse';
+            statusText.textContent = 'Maintenance';
+            statusText.className = 'text-yellow-400 font-bold';
+            break;
+          case 'offline':
+            statusIcon.className = 'w-4 h-4 bg-gradient-to-r from-red-400 to-rose-500 rounded-full';
+            statusText.textContent = 'Offline';
+            statusText.className = 'text-red-400 font-bold';
+            break;
+        }
+      }
+    }
+  }
+
+  db.ref('serverStats').on('value', (snapshot) => {
+    const data = snapshot.val() || {};
+    console.log('Database updated:', data);
+    updateStats(data);
+  });
+
 const aiChatButton = document.getElementById('ai-chat-button');
 const aiChatContainer = document.getElementById('ai-chat-container');
 const closeAiChat = document.getElementById('close-ai-chat');
@@ -927,17 +924,13 @@ function addMessage(content, isUser = false) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-
 function formatMessage(content) {
   content = content.replace(/\n\n/g, '<br><br>');
-  
   content = content.replace(/•/g, '<br>• ');
-  
   content = content.replace(/\*\*(.*?)\*\*/g, '<span class="text-emerald-400 font-semibold">$1</span>');
   
   return content;
 }
-
 
 function getSpecialResponse(message) {
   const lowerMessage = message.toLowerCase();
@@ -1114,10 +1107,9 @@ async function handleSubmit(e) {
   const message = aiChatInput.value.trim();
   if (!message) return;
   
-
   addMessage(message, true);
   aiChatInput.value = '';
-  
+
   const specialResponse = getSpecialResponse(message);
   if (specialResponse) {
     setTimeout(() => {
@@ -1127,6 +1119,7 @@ async function handleSubmit(e) {
   }
   
   try {
+
     const typingDiv = document.createElement('div');
     typingDiv.className = 'flex items-center gap-2 text-slate-400 text-sm p-3';
     typingDiv.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> AI sedang mengetik...';
@@ -1154,6 +1147,7 @@ async function handleSubmit(e) {
         ]
       })
     });
+
 
     chatMessages.removeChild(typingDiv);
 

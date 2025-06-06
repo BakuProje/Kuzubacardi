@@ -31,7 +31,7 @@ body {
 .fade-in {
   opacity: 0;
   transform: translateX(50px);
-  animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Ubah timing function dan durasi */
+  animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
 }
 @keyframes slideInRight {
   0% {
@@ -675,6 +675,7 @@ html {
   z-index: 60;
 }
 
+
 #ai-chat-container.active {
   opacity: 1;
   pointer-events: auto;
@@ -723,7 +724,6 @@ html {
     transform: translateY(0);
   }
 }
-
 
 .ai-message:hover, .user-message:hover {
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
