@@ -69,6 +69,11 @@
                   DONASI
                 </a>
               </li>
+              <li>
+                <a class="nav-link" href="#rules" id="nav-rules">
+                  RULES
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -136,6 +141,12 @@
               <span class="font-medium">DONASI</span>
             </a>
           </li>
+          <li class="transform transition-all duration-300 hover:-translate-y-1">
+            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#rules">
+              <i class="fas fa-book text-emerald-400"></i>
+              <span class="font-medium">RULES</span>
+            </a>
+          </li>
           </ul>
 
         <div class="absolute bottom-8 left-0 right-0 px-6">
@@ -171,17 +182,17 @@
         
         <div class="flex flex-col sm:flex-row gap-4 pt-4 button-animate">
           <a href="https://discord.gg/Z2kybabDg4" target="_blank" rel="noopener noreferrer" 
-             class="btn-modern bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center justify-center gap-3 hover:scale-105 group">
+             class="btn-modern discord bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center justify-center gap-3">
             <i class="fab fa-discord text-xl text-white group-hover:scale-110 transition-transform"></i>
             DISCORD
           </a>
           <button id="btn-connect" 
-                  class="btn-modern bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 group">
+                  class="btn-modern connect bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300 flex items-center justify-center gap-3">
             <i class="fas fa-plug group-hover:rotate-12 transition-transform"></i>
             CONNECT
           </button>
           <button onclick="togglePopup()" 
-        class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 group">
+        class="btn-modern bacardi-host bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3">
   <i class="fas fa-server group-hover:rotate-12 transition-transform"></i>
   Bacardi Host
 </button>
@@ -355,7 +366,8 @@
           <img src="./img/ssu.png" alt="SSU Event" class="w-full h-48 object-cover rounded-xl mb-4">
           <h3 class="text-xl font-bold text-white mb-3">Event SSU (Spirit Storage Unit)</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Event di mana kita harus memasukan sebuah ghost in jar ke dalam spirit dan kita harus mencapai % yang tinggi untuk mendapatkan Dreamcatcher Staff (DCS). Harga 1 DCS adalah 1 Blue Gem Lock
+            Event di mana kita harus memasukan sebuah ghost in jar ke dalam spirit dan kita harus mencapai % yang tinggi untuk mendapatkan Dreamcatcher Staff (DCS).dan kalian bisa gunakan /exchange untuk menukarkan dcs dengan harga: 
+            <br>- 1 Dreamcatcher Staff: 1 Blue Gem Lock
           </p>
         </div>
 
@@ -364,11 +376,11 @@
           <img src="./img/geiger.png" alt="Geiger Event" class="w-full h-48 object-cover rounded-xl mb-4">
           <h3 class="text-xl font-bold text-white mb-3">Event Geiger</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Event yang di mana kita harus mencari sinyal untuk mendapatkan item crystal dengan harga:
-            <br>- Red/Green Crystal: 10 DL
-            <br>- Blue Crystal: 15 DL
-            <br>- Black Crystal: 1 BGL
-            <br>- White Crystal: 3 BGL
+            Event yang di mana kita harus mencari sinyal untuk mendapatkan item crystal dan kalian bisa gunakan /exchange untuk menukar item crystal dengan harga:
+            <br>- Red/Green Crystal: 20 DIAMOND LOCK
+            <br>- Blue Crystal: 25 DIAMOND LOCK
+            <br>- Black Crystal: 1 BLUE GEM LOCK
+            <br>- White Crystal: 3 BLUE GEM LOCK
           </p>
         </div>
 
@@ -659,78 +671,191 @@
       </div>
     </section>
 
-
-<div id="bacardiPopup" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden">
-  <div class="bg-slate-900 rounded-2xl p-8 max-w-sm w-full shadow-2xl border border-emerald-500/30 relative">
-    <button onclick="togglePopup()" class="absolute top-4 right-4 text-white hover:text-red-400 transition-transform hover:rotate-90 duration-300">
-      <i class="fas fa-times text-xl"></i>
-    </button>
-    <h2 class="text-2xl font-bold text-center text-white mb-6">Bacardi Host</h2>
-    <div class="flex flex-col gap-4">
-      <button id="download-host" 
-              class="btn-modern bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-download"></i>
-        Download Vhost
-      </button>
-      <button onclick="copyText('https://gtpshost.com/BacardiPS-G.txt', 'Power Tunnel')" 
-              class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-bolt"></i>
-        Power tunnel
-      </button>
-      <button onclick="copyText('https://ios.gtpshost.com/BacardiPS-G', 'IOS Host')" 
-              class="btn-modern bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fab fa-apple"></i>
-        IOS Host
-      </button>
-      <button onclick="toggleAppHost()" 
-              class="btn-modern bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-mobile-alt"></i>
-        App Host
-      </button>
-    </div>
-  </div>
-</div>
-
-<div id="appHostModal" class="fixed inset-0 bg-black/90 z-[9999] hidden items-center justify-center">
-  <div class="bg-slate-800 rounded-xl p-6 w-full max-w-lg shadow-2xl relative">
-    <div class="flex items-center justify-between mb-4">
-      <div class="text-white text-xl font-semibold flex items-center gap-2">
-        <i class="fas fa-download"></i> Download Host APK
-      </div>
-      <button class="text-white hover:text-red-500" id="close-modal" onclick="toggleAppHost()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="space-y-4">
-      <a href="https://sfile.mobi/8XuJpKEqL6W" target="_blank" class="flex items-center bg-slate-700 rounded-lg p-4 gap-4 hover:bg-slate-600 transition">
-        <img src="https://play-lh.googleusercontent.com/-3C_GP8rFSyU84jrnhrn4O5mPiqPj3XuyNhGh5L8z-G5Wk8snKtYtmZ7R0sCxsmXKGzL=w600-h300-pc0xffffff-pd" 
-             alt="Virtual Host" 
-             class="w-12 h-12 rounded object-cover">
-        <div>
-          <div class="text-white font-bold">Virtual Host</div>
-          <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
-        </div>
-      </a>
+    <section id="rules" class="max-w-7xl mx-auto px-6 py-20">
+      <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Server Rules</h2>
       
-      <a href="https://sfile.mobi/2wAFRSHHTOQ" target="_blank" class="flex items-center bg-slate-700 rounded-lg p-4 gap-4 hover:bg-slate-600 transition">
-        <img src="https://images.sftcdn.net/images/t_app-icon-m/p/0aef4e63-c487-4875-b103-bf30528aaf72/383420525/no-root-hosts-go-logo" alt="Hosts GO" class="w-12 h-12 rounded">
-        <div>
-          <div class="text-white font-bold">Hosts GO</div>
-          <div class="text-slate-300 text-sm">Cocok Juga Untuk Main GTPS 😎</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <button onclick="showRulesPopup('market')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105 group">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i class="fas fa-store text-3xl text-emerald-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Market Rules</h3>
+            <p class="text-slate-400 text-sm text-center">Panduan dan aturan untuk aktivitas marketplace</p>
+          </div>
+        </button>
+
+        <button onclick="showRulesPopup('player')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 hover:scale-105 group">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i class="fas fa-users text-3xl text-blue-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Player Rules</h3>
+            <p class="text-slate-400 text-sm text-center">Aturan umum untuk semua pemain</p>
+          </div>
+        </button>
+
+        <button onclick="showRulesPopup('reme')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 hover:scale-105 group">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i class="fas fa-dice text-3xl text-purple-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Reme Rules</h3>
+            <p class="text-slate-400 text-sm text-center">Peraturan khusus untuk game Reme</p>
+          </div>
+        </button>
+
+        <button onclick="showRulesPopup('mods')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-rose-500/20 hover:border-rose-500/40 hover:scale-105 group">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-rose-500/20 to-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i class="fas fa-shield-alt text-3xl text-rose-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Mods Rules</h3>
+            <p class="text-slate-400 text-sm text-center">Aturan khusus untuk role mods ke atas</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+
+    <div id="rules-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="relative w-full h-full md:h-auto md:max-w-4xl mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-4 md:p-8 shadow-2xl transform scale-95 transition-all duration-300 border border-white/10 overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center gap-4">
+            <div id="rules-icon" class="w-12 h-12 rounded-full bg-gradient-to-r flex items-center justify-center">
+              <i class="fas text-2xl"></i>
+            </div>
+            <h2 id="rules-title" class="text-3xl font-bold text-white"></h2>
+          </div>
+          <button onclick="hideRulesPopup()" class="text-white text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
-      </a>
-      <a href="https://sfile.mobi/1zuFlBKK6Qw" target="_blank" class="flex items-center bg-slate-700 rounded-lg p-4 gap-4 hover:bg-slate-600 transition">
-        <img src="https://raw.githubusercontent.com/krlvm/PowerTunnel/master/.github/images/logo.png" alt="Power Tunnel" class="w-12 h-12 rounded">
-        <div>
-          <div class="text-white font-bold">Power Tunnel</div>
-          <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
+
+        <div class="flex gap-4 mb-8">
+          <button onclick="switchLanguage('id')" class="flex-1 py-2 rounded-xl bg-emerald-500/20 text-white font-medium hover:bg-emerald-500/40 transition-all" id="btn-id">
+            Bahasa Indonesia
+          </button>
+          <button onclick="switchLanguage('en')" class="flex-1 py-2 rounded-xl bg-slate-500/20 text-white font-medium hover:bg-slate-500/40 transition-all" id="btn-en">
+            English
+          </button>
         </div>
-      </a>
+
+        <div id="rules-content-id" class="space-y-6 text-slate-300"></div>
+        <div id="rules-content-en" class="space-y-6 text-slate-300 hidden"></div>
+      </div>
     </div>
-  </div>
-</div>
 
+    <footer class="mt-20 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div class="col-span-1 md:col-span-2 space-y-6">
+            <img alt="Bacardi PS Logo" 
+                 src="https://files.catbox.moe/prbsze.png"
+                 class="w-[180px] h-[90px] object-contain float" 
+            />
+            <p class="text-slate-400 leading-relaxed">
+              BacardiPS adalah komunitas GTPS yang berfokus pada pengalaman bermain yang menyenangkan dan membangun komunitas yang positif.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="https://discord.com/invite/Z2kybabDg4" 
+                 target="_blank" 
+                 class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-discord text-white"></i>
+              </a>
+              <a href="https://www.tiktok.com/@orenni" 
+                 target="_blank" 
+                 class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-rose-500 to-pink-600 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-tiktok text-white"></i>
+              </a>
+              <a href="https://api.whatsapp.com/send/?phone=6281527641306" 
+                 target="_blank" 
+                 class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-whatsapp text-white"></i>
+              </a>
+            </div>
+          </div>
 
+          <div class="space-y-6">
+            <h3 class="text-lg font-semibold text-white">Kontak</h3>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+                <i class="fas fa-envelope text-emerald-400"></i>
+                <a href="mailto:bacardisolid@gmail.com" target="_blank" class="hover:text-emerald-400 transition-colors">
+                  bacardisolid@gmail.com
+                </a>
+              </li>
+              <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+                <i class="fab fa-discord text-emerald-400"></i>
+                <a href="https://discord.com/invite/Z2kybabDg4" target="_blank" class="hover:text-emerald-400 transition-colors">
+                  BacardiPS Official
+                </a>
+              </li>
+              <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
+                <i class="fab fa-whatsapp text-emerald-400"></i>
+                <a href="https://api.whatsapp.com/send?phone=6281527641306&text=Welcome%20To%20Bacardi%20Support%0A%0AGrowid%3A%0ATanggal%3A%0AMasalah%3A" target="_blank" class="hover:text-emerald-400 transition-colors">
+                  6281527641306
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-slate-800">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-400 text-sm text-center md:text-left">
+              © 2025 BacardiPS. All rights reserved.
+            </p>
+            <div class="flex items-center gap-6">
+              <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Terms of Service</a>
+              <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="ai-chat-button" class="fixed bottom-6 right-6 z-50">
+      <button class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full p-4 shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-110">
+        <img src="https://files.catbox.moe/r9megz.png" alt="BacardiPS AI" class="w-7 h-7 object-contain">
+      </button>
+    </div>
+
+    <div id="ai-chat-container" class="fixed bottom-24 right-6 w-96 bg-slate-900/95 rounded-2xl shadow-2xl border border-emerald-500/20 backdrop-blur-md transform scale-95 opacity-0 pointer-events-none transition-all duration-300 z-50 md:w-96 md:bottom-24 md:right-6">
+      <div class="p-4 border-b border-slate-700 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <img src="https://files.catbox.moe/prbsze.png" alt="BacardiPS AI" class="w-8 h-8 rounded-lg">
+          <h3 class="text-white font-semibold">BacardiPS AI Assistant</h3>
+        </div>
+        <button id="close-ai-chat" class="text-slate-400 hover:text-emerald-400 transition-colors p-2">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <div id="chat-messages" class="p-4 h-[calc(100%-130px)] overflow-y-auto space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-lg overflow-hidden border-2 border-emerald-500/30">
+            <img src="https://files.catbox.moe/jtnwri.png" alt="BacardiPS AI" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 bg-slate-800/50 rounded-xl p-3 text-slate-300">
+            Halo! Saya adalah BacardiPS AI Assistant. Ada yang bisa saya bantu?
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-4 border-t border-slate-700">
+        <form id="ai-chat-form" class="flex gap-2">
+          <input type="text" 
+                 id="ai-chat-input"
+                 class="flex-1 bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-2 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/50"
+                 placeholder="Ketik pesan Anda..."
+          >
+          <button type="submit" class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl px-4 hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
 
     <div id="donasi-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
       <div class="relative w-full h-full md:h-auto md:max-w-lg mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-4 md:p-8 shadow-2xl transform scale-95 transition-all duration-300 border border-white/10 overflow-y-auto">
@@ -783,114 +908,100 @@
     </div>
   </div>
 
-  <footer class="mt-20 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-        <div class="col-span-1 md:col-span-2 space-y-6">
-          <img alt="Bacardi PS Logo" 
-               src="https://files.catbox.moe/prbsze.png"
-               class="w-[180px] h-[90px] object-contain float" 
-          />
-          <p class="text-slate-400 leading-relaxed">
-            BacardiPS adalah komunitas GTPS yang berfokus pada pengalaman bermain yang menyenangkan dan membangun komunitas yang positif.
-          </p>
-          <div class="flex items-center gap-4">
-            <a href="https://discord.com/invite/Z2kybabDg4" 
-               target="_blank" 
-               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 hover:scale-110 transition-all duration-300">
-              <i class="fab fa-discord text-white"></i>
-            </a>
-            <a href="https://www.tiktok.com/@orenni" 
-               target="_blank" 
-               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-rose-500 to-pink-600 hover:scale-110 transition-all duration-300">
-              <i class="fab fa-tiktok text-white"></i>
-            </a>
-            <a href="https://api.whatsapp.com/send/?phone=6281527641306" 
-               target="_blank" 
-               class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-110 transition-all duration-300">
-              <i class="fab fa-whatsapp text-white"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="space-y-6">
-          <h3 class="text-lg font-semibold text-white">Kontak</h3>
-          <ul class="space-y-4">
-            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
-              <i class="fas fa-envelope text-emerald-400"></i>
-              <a href="mailto:bacardisolid@gmail.com" target="_blank" class="hover:text-emerald-400 transition-colors">
-                bacardisolid@gmail.com
-              </a>
-            </li>
-            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
-              <i class="fab fa-discord text-emerald-400"></i>
-              <a href="https://discord.com/invite/Z2kybabDg4" target="_blank" class="hover:text-emerald-400 transition-colors">
-                BacardiPS Official
-              </a>
-            </li>
-            <li class="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors">
-              <i class="fab fa-whatsapp text-emerald-400"></i>
-              <a href="https://api.whatsapp.com/send?phone=6281527641306&text=Welcome%20To%20Bacardi%20Support%0A%0AGrowid%3A%0ATanggal%3A%0AMasalah%3A" target="_blank" class="hover:text-emerald-400 transition-colors">
-                6281527641306
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="pt-8 border-t border-slate-800">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-slate-400 text-sm text-center md:text-left">
-            © 2025 BacardiPS. All rights reserved.
-          </p>
-          <div class="flex items-center gap-6">
-            <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Terms of Service</a>
-            <a href="#" class="text-slate-400 hover:text-emerald-400 text-sm transition-colors">Privacy Policy</a>
-          </div>
-        </div>
+  <div id="bacardi-host-popup" class="bacardi-host-popup">
+    <div class="bacardi-host-content">
+      <button class="bacardi-host-close" onclick="togglePopup()">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>Bacardi Host</h2>
+      <div class="btn-container">
+        <a href="#" onclick="downloadHost()" class="bacardi-host-btn">
+          <i class="fas fa-download"></i>
+          Download Vhost
+        </a>
+        <a href="#" onclick="copyText('https://gtpshost.com/BacardiPS-G.txt', 'Power Tunnel')" class="bacardi-host-btn">
+          <i class="fas fa-bolt"></i>
+          Power tunnel
+        </a>
+        <a href="#" onclick="copyText('https://ios.gtpshost.com/BacardiPS-G', 'IOS Host')" class="bacardi-host-btn">
+          <i class="fab fa-apple"></i>
+          IOS Host
+        </a>
+        <a href="#" onclick="toggleAppHost()" class="bacardi-host-btn">
+          <i class="fas fa-mobile-alt"></i>
+          App Host
+        </a>
+        <a href="https://chat.whatsapp.com/JxhEF5k2Jw3KPuB7xZjLAg" target="_blank" class="bacardi-host-btn">
+          <i class="fab fa-whatsapp"></i>
+          Join Group BacardiPS
+        </a>
       </div>
     </div>
-  </footer>
-
-  <div id="ai-chat-button" class="fixed bottom-6 right-6 z-50">
-    <button class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full p-4 shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-110">
-      <i class="fas fa-robot text-2xl"></i>
-    </button>
   </div>
 
-  <div id="ai-chat-container" class="fixed bottom-24 right-6 w-96 bg-slate-900/95 rounded-2xl shadow-2xl border border-emerald-500/20 backdrop-blur-md transform scale-95 opacity-0 pointer-events-none transition-all duration-300 z-50 md:w-96 md:bottom-24 md:right-6">
-    <div class="p-4 border-b border-slate-700 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <img src="https://files.catbox.moe/jtnwri.png" alt="BacardiPS AI" class="w-8 h-8 rounded-lg">
-        <h3 class="text-white font-semibold">BacardiPS AI Assistant</h3>
-      </div>
-      <button id="close-ai-chat" class="text-slate-400 hover:text-emerald-400 transition-colors p-2">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-    </div>
-    
-    <div id="chat-messages" class="p-4 h-[calc(100%-130px)] overflow-y-auto space-y-4">
-      <div class="flex items-start gap-3">
-        <div class="w-8 h-8 rounded-lg overflow-hidden border-2 border-emerald-500/30">
-          <img src="https://files.catbox.moe/jtnwri.png" alt="BacardiPS AI" class="w-full h-full object-cover">
+  <div id="appHostModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[9999] hidden items-center justify-center">
+    <div class="bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl relative border border-white/10">
+      <div class="flex items-center justify-between mb-6">
+        <div class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-3">
+          <i class="fas fa-download"></i> Download Host APK
         </div>
-        <div class="flex-1 bg-slate-800/50 rounded-xl p-3 text-slate-300">
-          Halo! Saya adalah BacardiPS AI Assistant. Ada yang bisa saya bantu?
-        </div>
-      </div>
-    </div>
-    
-    <div class="p-4 border-t border-slate-700">
-      <form id="ai-chat-form" class="flex gap-2">
-        <input type="text" 
-               id="ai-chat-input"
-               class="flex-1 bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-2 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/50"
-               placeholder="Ketik pesan Anda..."
-        >
-        <button type="submit" class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl px-4 hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105">
-          <i class="fas fa-paper-plane"></i>
+        <button class="text-white hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300" onclick="toggleAppHost()">
+          <i class="fas fa-times text-xl"></i>
         </button>
-      </form>
+      </div>
+      
+      <div class="space-y-4">
+        <a href="https://sfile.mobi/8XuJpKEqL6W" target="_blank" 
+           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+            <img src="https://play-lh.googleusercontent.com/-3C_GP8rFSyU84jrnhrn4O5mPiqPj3XuyNhGh5L8z-G5Wk8snKtYtmZ7R0sCxsmXKGzL=w600-h300-pc0xffffff-pd" 
+                 alt="Virtual Host" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="flex-1">
+            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Virtual Host</div>
+            <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
+            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+              <i class="fas fa-download"></i>
+              <span>Klik untuk download</span>
+            </div>
+          </div>
+        </a>
+        
+        <a href="https://sfile.mobi/2wAFRSHHTOQ" target="_blank" 
+           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+            <img src="https://images.sftcdn.net/images/t_app-icon-m/p/0aef4e63-c487-4875-b103-bf30528aaf72/383420525/no-root-hosts-go-logo" 
+                 alt="Hosts GO" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="flex-1">
+            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Hosts GO</div>
+            <div class="text-slate-300 text-sm">Cocok Juga Untuk Main GTPS 😎</div>
+            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+              <i class="fas fa-download"></i>
+              <span>Klik untuk download</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://sfile.mobi/1zuFlBKK6Qw" target="_blank" 
+           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+            <img src="https://raw.githubusercontent.com/krlvm/PowerTunnel/master/.github/images/logo.png" 
+                 alt="Power Tunnel" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          </div>
+          <div class="flex-1">
+            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Power Tunnel</div>
+            <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
+            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+              <i class="fas fa-download"></i>
+              <span>Klik untuk download</span>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 

@@ -95,16 +95,12 @@ document.getElementById('mobile-menu').addEventListener('click', e => {
   }
 });
 
-function copyText(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(() => {
-      showNotification();
-    }, () => {
-      fallbackCopy(text);
-    });
-  } else {
+function copyText(text, label = "Teks") {
+  navigator.clipboard.writeText(text).then(() => {
+    showNotification(`${label} berhasil disalin!`);
+  }).catch(() => {
     fallbackCopy(text);
-  }
+  });
 }
 
 function fallbackCopy(text) {
@@ -118,14 +114,14 @@ function fallbackCopy(text) {
   textArea.select();
   try {
     document.execCommand('copy');
-    showNotification();
+    showNotification("Teks berhasil disalin!");
   } catch (err) {
     console.error('Failed to copy text');
   }
   document.body.removeChild(textArea);
 }
 
-function showNotification() {
+function showNotification(message) {
   const notification = document.getElementById('copy-notification');
   notification.style.transform = 'translateX(0)';
   setTimeout(() => {
@@ -657,55 +653,32 @@ function showQRZoom(imgSrc) {
 }
 
 function togglePopup() {
-  const popup = document.getElementById('bacardiPopup');
-  popup.innerHTML = `
-  <div class="bg-slate-900 rounded-2xl p-8 max-w-sm w-full shadow-2xl border border-emerald-500/30 relative">
-    <button onclick="togglePopup()" class="absolute top-4 right-4 text-white hover:text-red-400 transition-transform hover:rotate-90 duration-300">
-      <i class="fas fa-times text-xl"></i>
-    </button>
-    <h2 class="text-2xl font-bold text-center text-white mb-6">Bacardi Host</h2>
-    <div class="flex flex-col gap-4">
-      <button onclick="downloadHost()" 
-              class="btn-modern bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-download"></i>
-        Download Vhost
-      </button>
-      <button onclick="copyText('https://gtpshost.com/BacardiPS-G.txt', 'Power Tunnel')" 
-              class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-bolt"></i>
-        Power tunnel
-      </button>
-      <button onclick="copyText('https://ios.gtpshost.com/BacardiPS-G', 'IOS Host')" 
-              class="btn-modern bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fab fa-apple"></i>
-        IOS Host
-      </button>
-      <button onclick="toggleAppHost()" 
-              class="btn-modern bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fas fa-mobile-alt"></i>
-        App Host
-      </button>
-      <a href="https://chat.whatsapp.com/IUyX4WyHmBOA2mEdC6TFYG" 
-         target="_blank"
-         class="btn-modern bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-        <i class="fab fa-whatsapp"></i>
-        Join Group BacardiPS
-      </a>
-    </div>
-  </div>`;
-  popup.classList.toggle('hidden');
+  const popup = document.getElementById('bacardi-host-popup');
+  if (popup.classList.contains('active')) {
+    popup.classList.remove('active');
+  } else {
+    popup.classList.add('active');
+  }
 }
 
 function toggleAppHost() {
   const modal = document.getElementById('appHostModal');
-  modal.classList.toggle('hidden');
+  if (modal.classList.contains('hidden')) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  } else {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
 }
 
 function copyText(text, label = "Teks") {
   navigator.clipboard.writeText(text).then(() => {
     showNotification(`${label} berhasil disalin!`);
   }).catch(() => {
-    showNotification(`Gagal menyalin ${label}.`);
+    fallbackCopy(text);
   });
 }
 
@@ -1207,4 +1180,488 @@ function downloadHost() {
 document.getElementById('qr-container')?.addEventListener('click', () => {
   const qrImage = document.querySelector('#qr-container img');
   showQRZoom(qrImage.src);
+});
+
+const rulesContent = {
+  market: {
+    id: {
+      title: "Rules Market",
+      icon: "fa-store",
+      gradient: "from-emerald-500 to-teal-500",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-emerald-400"></i>
+              Peraturan Market
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Mencantumkan Grow ID</h4>
+                  <p class="text-slate-300">Pastikan Anda mencantumkan Grow ID Anda saat berjualan untuk menghindari tindakan penipuan.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Sertakan Harga</h4>
+                  <p class="text-slate-300">Wajib mencantumkan harga saat berjualan untuk mengurangi manipulasi di marketplace.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Harga LOCK</h4>
+                  <p class="text-slate-300">Cek harga LOCK terkini di world <span class="text-emerald-400 font-semibold">TRADE</span>. Harga dapat berubah sesuai keadaan ekonomi server.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">4</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Larangan Manipulasi</h4>
+                  <p class="text-slate-300">Dilarang keras memanipulasi harga. Pelanggar akan dikenakan sanksi.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    },
+    en: {
+      title: "Market Rules",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-emerald-400"></i>
+              Market Regulations
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Include Grow ID</h4>
+                  <p class="text-slate-300">Make sure to include your Grow ID when selling to prevent fraud.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Include Price</h4>
+                  <p class="text-slate-300">Must include price when selling to reduce marketplace manipulation.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">LOCK Price</h4>
+                  <p class="text-slate-300">Check current LOCK prices in <span class="text-emerald-400 font-semibold">TRADE</span> world. Prices may change according to server economy.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold">4</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">No Manipulation</h4>
+                  <p class="text-slate-300">Price manipulation is strictly prohibited. Violators will be sanctioned.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    }
+  },
+  player: {
+    id: {
+      title: "Rules Player",
+      icon: "fa-users",
+      gradient: "from-blue-500 to-indigo-500",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-blue-400"></i>
+              Peraturan Umum Player
+            </h3>
+            <div class="space-y-4">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Tidak diperbolehkan menggunakan lebih dari 2 akun</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang melakukan tindakan rasis terhadap agama/suku</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang mengancam player lain untuk keuntungan pribadi</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang memberikan akun kepada orang lain</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang meniru nama growid player lain untuk menipu</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang memanipulasi harga pasar</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang menyebarkan hoax dalam game</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang menjual barang game untuk uang real</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Dilarang menjual data-data akun</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Batasi chat saat promosi</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      `
+    },
+    en: {
+      title: "Player Rules",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-blue-400"></i>
+              General Player Rules
+            </h3>
+            <div class="space-y-4">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Not allowed to use more than 2 accounts</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No racism against religion/ethnicity</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No threatening other players for personal gain</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No sharing accounts with others</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No copying other players' growid to scam</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No market price manipulation</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No spreading hoaxes in game</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No selling in-game items for real money</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">No selling account data</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+                  <span class="text-slate-300">Limit chat when promoting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      `
+    }
+  },
+  reme: {
+    id: {
+      title: "Rules Reme",
+      icon: "fa-dice",
+      gradient: "from-purple-500 to-pink-500",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-purple-400"></i>
+              Peraturan Reme
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Batas Maksimal</h4>
+                  <p class="text-slate-300">Maksimal bermain 10 BGL. Lebih dari itu akan dikenakan curse/ban 1 jam + clear world.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Rekaman Wajib</h4>
+                  <p class="text-slate-300">Setiap permainan reme wajib direkam untuk menghindari hal yang tidak diinginkan.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">World Verif</h4>
+                  <p class="text-slate-300">Keuntungan: no max bet, bebas mengatur max bet selama tidak melebihi modal. Harga verif: 20k.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    },
+    en: {
+      title: "Reme Rules",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-purple-400"></i>
+              Reme Regulations
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Maximum Limit</h4>
+                  <p class="text-slate-300">Maximum play is 10 BGL. Exceeding will result in curse/ban 1 hour + world clear.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Recording Required</h4>
+                  <p class="text-slate-300">Every reme game must be recorded to avoid unwanted incidents.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                  <span class="text-purple-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Verified World</h4>
+                  <p class="text-slate-300">Benefits: no max bet, free to set max bet as long as not exceeding capital. Verification price: 20k.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    }
+  },
+  mods: {
+    id: {
+      title: "Rules Mods",
+      icon: "fa-shield-alt",
+      gradient: "from-rose-500 to-red-500",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-rose-400"></i>
+              Peraturan Moderator
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Penggunaan Bedrock</h4>
+                  <p class="text-slate-300">Dilarang membuat titid menggunakan bedrock dan menaruh bedrock sembarangan di world player.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Ghost Mode</h4>
+                  <p class="text-slate-300">Dilarang mengganggu player yang AFK (BFG, fishing, dll) menggunakan /ghost. Sanksi: ban 3 jam dan demote 3 hari.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Unlimited Block/Set</h4>
+                  <p class="text-slate-300">Dilarang memberi block/set sembarangan ke player untuk menjaga stabilitas ekonomi. Sanksi: demote.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    },
+    en: {
+      title: "Mods Rules",
+      content: `
+        <div class="space-y-6">
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <i class="fas fa-info-circle text-rose-400"></i>
+              Moderator Regulations
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Bedrock Usage</h4>
+                  <p class="text-slate-300">Prohibited to create inappropriate content using bedrock and placing bedrock randomly in player worlds.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Ghost Mode</h4>
+                  <p class="text-slate-300">Prohibited to disturb AFK players (BFG, fishing, etc) using /ghost. Sanction: 3-hour ban and 3-day demote.</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                  <span class="text-rose-400 font-bold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Unlimited Block/Set</h4>
+                  <p class="text-slate-300">Prohibited to give blocks/sets randomly to players to maintain economic stability. Sanction: demote.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    }
+  }
+};
+
+let currentRulesType = null;
+let currentLanguage = 'id';
+
+function showRulesPopup(type) {
+  currentRulesType = type;
+  const popup = document.getElementById('rules-popup');
+  const content = rulesContent[type];
+  
+  if (!content) return;
+  
+  const icon = document.getElementById('rules-icon');
+  const title = document.getElementById('rules-title');
+  
+  icon.className = `w-12 h-12 rounded-full bg-gradient-to-r ${content[currentLanguage].gradient || content.id.gradient} flex items-center justify-center`;
+  icon.innerHTML = `<i class="fas ${content[currentLanguage].icon || content.id.icon} text-2xl text-white"></i>`;
+  
+  title.textContent = content[currentLanguage].title;
+  
+  document.getElementById('rules-content-id').innerHTML = content.id.content;
+  document.getElementById('rules-content-en').innerHTML = content.en.content;
+  
+  document.getElementById('rules-content-id').style.display = currentLanguage === 'id' ? 'block' : 'none';
+  document.getElementById('rules-content-en').style.display = currentLanguage === 'en' ? 'block' : 'none';
+  
+  document.getElementById('btn-id').className = `flex-1 py-2 rounded-xl ${currentLanguage === 'id' ? 'bg-emerald-500' : 'bg-emerald-500/20'} text-white font-medium hover:bg-emerald-500/40 transition-all`;
+  document.getElementById('btn-en').className = `flex-1 py-2 rounded-xl ${currentLanguage === 'en' ? 'bg-emerald-500' : 'bg-emerald-500/20'} text-white font-medium hover:bg-emerald-500/40 transition-all`;
+  
+  popup.style.opacity = '1';
+  popup.style.pointerEvents = 'auto';
+}
+
+function hideRulesPopup() {
+  const popup = document.getElementById('rules-popup');
+  popup.style.opacity = '0';
+  popup.style.pointerEvents = 'none';
+}
+
+function switchLanguage(lang) {
+  currentLanguage = lang;
+  if (currentRulesType) {
+    showRulesPopup(currentRulesType);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('rules-popup').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      hideRulesPopup();
+    }
+  });
+});
+
+
+document.querySelectorAll('.btn-modern').forEach(button => {
+  button.addEventListener('click', function(e) {
+    this.classList.remove('clicked');
+    
+    void this.offsetWidth;
+    
+    this.classList.add('clicked');
+    
+    setTimeout(() => {
+      this.classList.remove('clicked');
+    }, 600);
+  });
 });
