@@ -4,7 +4,9 @@ function initParticles() {
   
   const ctx = canvas.getContext('2d');
   const particles = [];
-  const particleCount = window.innerWidth < 768 ? 25 : 50; // Kurangi jumlah particle di mobile
+  
+  // Drastis mengurangi jumlah particles untuk mobile
+  const particleCount = window.innerWidth < 768 ? 10 : 50;
   
   function updateCanvasSize() {
     canvas.width = window.innerWidth;
@@ -13,27 +15,36 @@ function initParticles() {
   
   updateCanvasSize();
   
-  // Throttle resize event
   let resizeTimeout;
   window.addEventListener('resize', () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateCanvasSize, 100);
   });
 
-  // Inisialisasi particles dengan ukuran yang lebih kecil untuk mobile
+  // Inisialisasi particles dengan properti yang lebih ringan untuk mobile
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.3 : 0.5),
-      vy: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.3 : 0.5),
-      size: Math.random() * (window.innerWidth < 768 ? 1.5 : 2) + 1,
-      opacity: Math.random() * 0.3 + 0.2
+      vx: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.2 : 0.5), // Lebih lambat di mobile
+      vy: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.2 : 0.5),
+      size: Math.random() * (window.innerWidth < 768 ? 1 : 2) + 0.5, // Lebih kecil di mobile
+      opacity: Math.random() * 0.2 + 0.1 // Lebih transparan di mobile
     });
   }
 
   let animationFrameId;
-  function animate() {
+  let lastTime = 0;
+  const fpsInterval = window.innerWidth < 768 ? 1000/30 : 1000/60; // 30 FPS di mobile, 60 FPS di desktop
+  
+  function animate(currentTime) {
+    animationFrameId = requestAnimationFrame(animate);
+    
+    // Throttle frame rate
+    const elapsed = currentTime - lastTime;
+    if (elapsed < fpsInterval) return;
+    lastTime = currentTime - (elapsed % fpsInterval);
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     particles.forEach(particle => {
@@ -48,21 +59,106 @@ function initParticles() {
       ctx.fillStyle = `rgba(16, 185, 129, ${particle.opacity})`;
       ctx.fill();
     });
-    
-    animationFrameId = requestAnimationFrame(animate);
   }
   
-  // Pause animation when page is not visible
+  // Pause animation saat tidak visible
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       cancelAnimationFrame(animationFrameId);
     } else {
-      animate();
+      lastTime = performance.now();
+      animate(lastTime);
     }
   });
   
-  animate();
+  animate(performance.now());
 }
+
+// Optimasi scroll animations untuk mobile
+function handleScrollAnimations() {
+  const isMobile = window.innerWidth < 768;
+  
+  if (!('IntersectionObserver' in window)) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Sederhanakan animasi untuk mobile
+        if (isMobile) {
+          entry.target.style.transition = 'opacity 0.3s ease';
+          entry.target.style.opacity = '1';
+        } else {
+          entry.target.classList.add('animate');
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: isMobile ? 0 : 0.1, // Kurangi threshold di mobile
+    rootMargin: isMobile ? '30px' : '50px' // Kurangi margin di mobile
+  });
+
+  // Persiapkan elemen untuk animasi
+  document.querySelectorAll('.stat-card, .staff-stats, .connect-card').forEach(el => {
+    if (isMobile) {
+      // Reset style untuk mobile
+      el.style.opacity = '0';
+      el.style.transform = 'none';
+      el.style.transitionDelay = '0s';
+    }
+    
+    if (!el.classList.contains('animate')) {
+      observer.observe(el);
+    }
+  });
+}
+
+// Optimasi scroll handler
+let scrollTimeout;
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  // Skip animation frame jika di mobile dan scroll masih berlangsung
+  if (window.innerWidth < 768) {
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveSection();
+          handleScrollAnimations();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, 100); // Delay lebih lama untuk mobile
+  } else {
+    // Desktop behavior
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateActiveSection();
+        handleScrollAnimations();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+});
+
+// Tambahkan CSS untuk animasi yang lebih sederhana di mobile
+const style = document.createElement('style');
+style.textContent = `
+  @media (max-width: 768px) {
+    .stat-card, .connect-card, .staff-stats {
+      transform: none !important;
+      transition: opacity 0.3s ease !important;
+    }
+    
+    .animate {
+      opacity: 1 !important;
+    }
+  }
+`;
+document.head.appendChild(style);
 
 initParticles();
 
@@ -787,7 +883,7 @@ function handleScrollAnimations() {
   });
 }
 
-let ticking = false;
+
 window.addEventListener('scroll', () => {
   if (!ticking) {
     requestAnimationFrame(() => {
