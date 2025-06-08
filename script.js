@@ -658,6 +658,20 @@ function togglePopup() {
     popup.classList.remove('active');
   } else {
     popup.classList.add('active');
+    
+    // Tambahkan tombol Newget
+    const btnContainer = popup.querySelector('.btn-container');
+    if (!document.getElementById('newget-btn')) {
+      const newgetBtn = document.createElement('button');
+      newgetBtn.id = 'newget-btn';
+      newgetBtn.className = 'bacardi-host-btn';
+      newgetBtn.innerHTML = `
+        <i class="fas fa-book-open"></i>
+        <span>Newget</span>
+      `;
+      newgetBtn.addEventListener('click', showNewgetPopup);
+      btnContainer.appendChild(newgetBtn);
+    }
   }
 }
 
@@ -911,6 +925,27 @@ function formatMessage(content) {
 function getSpecialResponse(message) {
   const lowerMessage = message.toLowerCase();
   
+  if (lowerMessage.includes('newget') || lowerMessage === '/newget') {
+    return `**Panduan Newget BacardiPS** 🎮
+
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/newget.png" 
+       alt="Panduan Newget" 
+       class="w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-all"
+       onclick="showNewgetPopup(); event.stopPropagation();">
+  <div class="text-sm text-center mt-2 text-slate-400">Klik gambar untuk memperbesar</div>
+</div>
+
+💡 **Informasi Newget:**
+• Item yang player daapat saat pertama kali login
+
+<button onclick="showNewgetPopup()" 
+        class="mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 w-full justify-center">
+  <i class="fas fa-book-open"></i>
+  <span>Lihat Panduan Lengkap</span>
+</button>`;
+  }
+
   if (lowerMessage.includes('donasi') || 
       lowerMessage.includes('donate') || 
       lowerMessage.includes('sumbang') ||
@@ -1665,3 +1700,33 @@ document.querySelectorAll('.btn-modern').forEach(button => {
     }, 600);
   });
 });
+
+function showNewgetPopup() {
+  const popup = document.createElement('div');
+  popup.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 opacity-0 transition-opacity duration-300';
+  popup.style.backdropFilter = 'blur(5px)';
+  
+  popup.innerHTML = `
+    <div class="relative bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 transform scale-95 transition-transform duration-300">
+      <button class="absolute top-2 right-2 text-slate-400 hover:text-white transition-colors">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <img src="./img/newget.png" alt="Newget Guide" class="max-w-full h-auto rounded-xl">
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+  
+  setTimeout(() => {
+    popup.style.opacity = '1';
+    popup.querySelector('.bg-slate-900').style.transform = 'scale(1)';
+  }, 10);
+  
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup || e.target.closest('button')) {
+      popup.style.opacity = '0';
+      popup.querySelector('.bg-slate-900').style.transform = 'scale(0.95)';
+      setTimeout(() => popup.remove(), 300);
+    }
+  });
+}

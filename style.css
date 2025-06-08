@@ -1,10 +1,35 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.animate-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 body {
   font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a, #164e63);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: #f8fafc;
+  will-change: background-position;
 }
 
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -20,13 +45,12 @@ body {
   background: linear-gradient(45deg, #059669, #047857);
 }
 
-
 .glass {
   background: rgba(30, 41, 59, 0.3);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(148, 163, 184, 0.1);
 }
-
 
 .fade-in {
   opacity: 0;
@@ -37,9 +61,6 @@ body {
   0% {
     opacity: 0;
     transform: translateX(50px);
-  }
-  20% {
-    opacity: 0;
   }
   100% {
     opacity: 1;
@@ -63,7 +84,6 @@ body {
     transform: translateY(-15px) translateZ(0);
   }
 }
-
 
 .gradient-text, .roleplay-text, .paragraph-animate {
   opacity: 0;
@@ -103,7 +123,6 @@ body {
   }
 }
 
-
 .btn-modern {
   position: relative;
   overflow: hidden;
@@ -127,7 +146,6 @@ body {
 .btn-modern:hover::after {
   opacity: 1;
 }
-
 
 .btn-modern.discord:hover {
   box-shadow: 0 10px 20px -5px rgba(88, 101, 242, 0.4);
@@ -157,7 +175,6 @@ body {
     opacity: 0;
   }
 }
-
 
 .particles {
   position: fixed;
@@ -357,13 +374,11 @@ body {
   .stat-card:nth-child(4) { transition-delay: 0.4s; }
 }
 
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   -webkit-overflow-scrolling: touch;
 }
-
 
 .nav-link {
   position: relative;
@@ -376,13 +391,11 @@ html {
   background: transparent;
 }
 
-
 .nav-link:hover {
   color: #f8fafc;
   transform: translateY(-2px);
   background: transparent;
 }
-
 
 .nav-link.active {
   background: linear-gradient(
@@ -398,7 +411,6 @@ html {
   background-size: 300% 100%;
   animation: rgbFlow 3s linear infinite;
 }
-
 
 .nav-link::after {
   content: '';
@@ -421,22 +433,18 @@ html {
   animation: rgbFlow 3s linear infinite;
 }
 
-
 @keyframes rgbFlow {
   0% { background-position: 0% 50%; }
   100% { background-position: 300% 50%; }
 }
 
-
 .nav-link:hover::after {
   transform: scaleX(0.8);
 }
 
-
 .nav-link.active::after {
   transform: scaleX(1);
 }
-
 
 .nav-container {
   position: relative;
@@ -446,11 +454,9 @@ html {
   background: transparent;
 }
 
-
 .nav-link .indicator {
   display: none;
 }
-
 
 .animate-text-slide {
   opacity: 0;
@@ -472,45 +478,26 @@ html {
   }
 }
 
-
 .gradient-text {
   opacity: 0;
   transform: translateX(30px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 
 .roleplay-text {
   opacity: 0;
   transform: translateX(30px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
 }
 
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
 .paragraph-animate {
   opacity: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -518,34 +505,10 @@ html {
 .paragraph-animate:nth-child(2) { animation-delay: 0.6s; }
 .paragraph-animate:nth-child(3) { animation-delay: 0.8s; }
 
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
 .button-animate {
   opacity: 0;
   animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.2s;
 }
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 
 .social-button-fixed {
   transition: all 0.3s ease;
@@ -555,7 +518,6 @@ html {
 .social-button-fixed:hover {
   transform: translateY(-5px);
 }
-
 
 .stat-card, .connect-card {
   will-change: transform, opacity;
@@ -576,7 +538,6 @@ html {
 .stat-card:nth-child(3) { transition-delay: 0.6s; }
 .stat-card:nth-child(4) { transition-delay: 0.8s; }
 
-
 .staff-stats {
   opacity: 0;
   transform: translateX(30px);
@@ -588,11 +549,9 @@ html {
   transform: translateX(0);
 }
 
-
 .nav-link .indicator {
   display: none;
 }
-
 
 .animate-text-slide {
   opacity: 0;
@@ -603,56 +562,26 @@ html {
   animation: slideInText 0.8s forwards;
 }
 
-@keyframes slideInText {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
 .gradient-text {
   opacity: 0;
   transform: translateX(30px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 
 .roleplay-text {
   opacity: 0;
   transform: translateX(30px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
 }
 
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
 .paragraph-animate {
   opacity: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -660,34 +589,10 @@ html {
 .paragraph-animate:nth-child(2) { animation-delay: 0.6s; }
 .paragraph-animate:nth-child(3) { animation-delay: 0.8s; }
 
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
 .button-animate {
   opacity: 0;
   animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards 1.2s;
 }
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 
 .social-button-fixed {
   transition: all 0.3s ease;
@@ -697,7 +602,6 @@ html {
 .social-button-fixed:hover {
   transform: translateY(-5px);
 }
-
 
 .stat-card {
   opacity: 0;
@@ -800,7 +704,6 @@ html {
   z-index: 60;
 }
 
-
 #ai-chat-container.active {
   opacity: 1;
   pointer-events: auto;
@@ -854,7 +757,6 @@ html {
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
   transition: all 0.3s ease;
 }
-
 
 @media (min-width: 769px) {
   #ai-chat-container {
@@ -999,7 +901,6 @@ html {
   }
 }
 
-
 @media (max-width: 768px) {
   #ai-chat-button button {
     width: 60px;
@@ -1111,3 +1012,50 @@ html {
   color: white;
   transform: rotate(90deg);
 }
+
+.max-w- {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#newget-btn {
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+#newget-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.newget-popup {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.newget-popup img {
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
