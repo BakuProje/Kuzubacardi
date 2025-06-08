@@ -1,24 +1,38 @@
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  
   const ctx = canvas.getContext('2d');
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
   const particles = [];
-  const particleCount = 50;
+  const particleCount = window.innerWidth < 768 ? 25 : 50; // Kurangi jumlah particle di mobile
   
+  function updateCanvasSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  updateCanvasSize();
+  
+  // Throttle resize event
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateCanvasSize, 100);
+  });
+
+  // Inisialisasi particles dengan ukuran yang lebih kecil untuk mobile
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.5 + 0.2
+      vx: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.3 : 0.5),
+      vy: (Math.random() - 0.5) * (window.innerWidth < 768 ? 0.3 : 0.5),
+      size: Math.random() * (window.innerWidth < 768 ? 1.5 : 2) + 1,
+      opacity: Math.random() * 0.3 + 0.2
     });
   }
-  
+
+  let animationFrameId;
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -35,15 +49,19 @@ function initParticles() {
       ctx.fill();
     });
     
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
   }
   
-  animate();
-  
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  // Pause animation when page is not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationFrameId);
+    } else {
+      animate();
+    }
   });
+  
+  animate();
 }
 
 initParticles();
@@ -747,35 +765,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleScrollAnimations() {
-  const animateOnScroll = (elements, className) => {
-    elements.forEach(element => {
-      const elementTop = element.getBoundingClientRect().top;
-      const triggerPoint = window.innerHeight * 0.8;
-      
-      if (elementTop < triggerPoint) {
-        element.classList.add(className);
+  if (!('IntersectionObserver' in window)) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
       }
     });
-  };
+  }, {
+    threshold: 0.1,
+    rootMargin: '50px'
+  });
 
-  const statCards = document.querySelectorAll('.stat-card');
-  const staffStats = document.querySelector('.staff-stats');
-  const connectCards = document.querySelectorAll('.connect-card');
-
-  animateOnScroll(statCards, 'animate');
-  if (staffStats) animateOnScroll([staffStats], 'animate');
-  animateOnScroll(connectCards, 'animate');
+  // Observe elements yang perlu animasi
+  document.querySelectorAll('.stat-card, .staff-stats, .connect-card').forEach(el => {
+    if (!el.classList.contains('animate')) {
+      observer.observe(el);
+    }
+  });
 }
 
-let scrollTimeout;
+let ticking = false;
 window.addEventListener('scroll', () => {
-  if (scrollTimeout) {
-    window.cancelAnimationFrame(scrollTimeout);
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateActiveSection();
+      handleScrollAnimations();
+      ticking = false;
+    });
+    ticking = true;
   }
-  
-  scrollTimeout = window.requestAnimationFrame(() => {
-    handleScrollAnimations();
-  });
 });
 
 document.addEventListener('DOMContentLoaded', handleScrollAnimations);
