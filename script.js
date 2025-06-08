@@ -1,10 +1,16 @@
 function initParticles() {
+  // Cek apakah device mobile
+  const isMobile = window.innerWidth < 768;
+  
+  // Jika mobile, tidak perlu inisialisasi canvas
+  if (isMobile) return;
+  
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
   
   const ctx = canvas.getContext('2d');
   const particles = [];
-  const particleCount = window.innerWidth < 768 ? 25 : 50; // Kurangi jumlah particle di mobile
+  const particleCount = 50;
   
   function updateCanvasSize() {
     canvas.width = window.innerWidth;
