@@ -1012,43 +1012,186 @@ Terima kasih atas dukungan Anda! 🙏`;
 Berikut adalah event-event yang tersedia di server kami:
 
 1️⃣ **Event Fishing**
-• Event memancing untuk mendapatkan Diamond Lock
-• Cek reward dengan command /sellfish
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/fish.png" alt="Fishing Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Event memancing untuk mendapatkan Diamond Lock:</p>
+    <ul class="list-disc pl-5 text-slate-300 space-y-1">
+      <li>Cek reward dengan command /sellfish</li>
+      <li>Semakin lama memancing, semakin besar reward</li>
+    </ul>
+  </div>
+</div>
 
 2️⃣ **Event BFG (Break For Gems)**
-• Break block farmable (chand, lgrid, pepper, pot)
-• Dapatkan Gems dan hadiah tambahan (DL, BGL, Exp Potion)
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/bfg.png" alt="BFG Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Event break block farmable untuk mendapatkan hadiah:</p>
+    <ul class="list-disc pl-5 text-slate-300">
+      <li>Block yang bisa di-break: Chandelier, LaserGrid, Pepper Tree, Pot O' Gold</li>
+      <li>Dapatkan Gems dan hadiah tambahan</li>
+    </ul>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Hadiah yang bisa didapat:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>Diamond Lock</li>
+        <li>Blue Gem Lock</li>
+        <li>Exp Potion</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 3️⃣ **Event Geiger**
-• Cari sinyal untuk crystal dengan hadiah:
-• Red/Green Crystal: 10 DL
-• Blue Crystal: 15 DL
-• Black Crystal: 1 BGL
-• White Crystal: 3 BGL
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/geiger.png" alt="Geiger Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Event mencari sinyal untuk mendapatkan crystal:</p>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Harga Crystal (/exchange):</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>Red/Green Crystal: 20 DIAMOND LOCK</li>
+        <li>Blue Crystal: 25 DIAMOND LOCK</li>
+        <li>Black Crystal: 1 BLUE GEM LOCK</li>
+        <li>White Crystal: 2 BLUE GEM LOCK</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 4️⃣ **Event SSU (Spirit Storage Unit)**
-• Masukkan ghost jar ke spirit storage
-• Capai % tinggi untuk dapat Dreamcatcher Staff (DCS)
-• 1 DCS = 1 Blue Gem Lock
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/ssu.png" alt="SSU Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Event memasukkan ghost jar ke spirit storage:</p>
+    <ul class="list-disc pl-5 text-slate-300">
+      <li>Capai % tinggi untuk mendapatkan Dreamcatcher Staff (DCS)</li>
+      <li>Gunakan /exchange untuk menukar DCS</li>
+    </ul>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Harga Exchange:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>1 Dreamcatcher Staff: 50 DIAMOND LOCK</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 5️⃣ **Password Door (PwDoor)**
-• Tebak password untuk dapat hadiah
-• Hadiah ditentukan pembuat PwDoor
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/pwdoor.png" alt="Password Door Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Game tebak password door:</p>
+    <ul class="list-disc pl-5 text-slate-300">
+      <li>Tebak password untuk mendapatkan hadiah</li>
+      <li>Hadiah ditentukan oleh pembuat Password Door</li>
+    </ul>
+  </div>
+</div>
 
 6️⃣ **Dice Game**
-• Game menang kalah dengan hadiah dari host
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/dice.png" alt="Dice Game Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Permainan menang kalah dengan dadu:</p>
+    <ul class="list-disc pl-5 text-slate-300">
+      <li>Hadiah sesuai yang diberikan oleh pembuat dice game</li>
+      <li>Permainan fair dan transparan</li>
+    </ul>
+  </div>
+</div>
 
 7️⃣ **Event WOTD (World Of The Day)**
-• Design world terbaik
-• Prize 100.000-150.000
-• Berlangsung 5-22 Juni
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/wotd.png" alt="WOTD Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Event design world terbaik:</p>
+    <ul class="list-disc pl-5 text-slate-300">
+      <li>3 world terbaik akan dipilih</li>
+      <li>Prize 100.000-150.000</li>
+      <li>Event berakhir tanggal 22 Juni</li>
+    </ul>
+  </div>
+</div>
+
+8️⃣ **Event Chemical (Science Station)**
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/chemi.png" alt="Chemical Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Chemical adalah event di mana pemain harus membuat Mistery Chemical dan mengumpulkannya:</p>
+    <ul class="list-disc pl-5 text-slate-300 space-y-1">
+      <li>Kumpulkan 25 Mistery Chemical = 1 Dumb LiteCoin (/exchange)</li>
+      <li>Kumpulkan 100 Dumb LiteCoin untuk roulette dengan owner</li>
+    </ul>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Bahan Mistery Chemical:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>Yellow Chemical: 20</li>
+        <li>Blue Chemical: 10</li>
+        <li>Pink Chemical: 5</li>
+      </ul>
+    </div>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Prize Roulette:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>5 Magplant 15K</li>
+        <li>50-100 Diamond Lock</li>
+        <li>Random Get Gaia's Beacon</li>
+        <li>Random Get Unstable Tesseract</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+9️⃣ **Event Fossil**
+<div class="mt-2 bg-slate-800/50 p-4 rounded-xl border border-emerald-500/30">
+  <img src="./img/fossil.png" alt="Fossil Event" class="w-full h-auto rounded-lg">
+  <div class="mt-4 space-y-2">
+    <p class="text-slate-300">Fossil adalah event pengumpulan Ancient Plant Seed:</p>
+    <ul class="list-disc pl-5 text-slate-300 space-y-1">
+      <li>Kumpulkan 30 Ancient Plant Seed = 1 Gnome Coin (/exchange)</li>
+      <li>Kumpulkan 100 Gnome Coin untuk roulette dengan owner</li>
+    </ul>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Cara Mendapatkan Ancient Plant Seed:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>Gunakan Fossil Prep</li>
+        <li>Gunakan Polished Fossil</li>
+        <li>Tunggu ±3 jam untuk harvest</li>
+      </ul>
+    </div>
+    <div class="mt-3">
+      <p class="font-semibold text-emerald-400">Prize Roulette:</p>
+      <ul class="list-disc pl-5 text-slate-300">
+        <li>5 Magplant 15K</li>
+        <li>50-150 Diamond Lock</li>
+        <li>Random Get Gaia's Beacon</li>
+        <li>Random Get Unstable Tesseract</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+  <button onclick="window.open('https://discord.com/invite/Z2kybabDg4', '_blank')" 
+          class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 w-full justify-center">
+    <i class="fab fa-discord text-xl"></i>
+    <span>Join Discord BacardiPS</span>
+  </button>
+
+  <button onclick="window.open('https://chat.whatsapp.com/IUyX4WyHmBOA2mEdC6TFYG', '_blank')" 
+          class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 w-full justify-center">
+    <i class="fab fa-whatsapp text-xl"></i>
+    <span>Join WhatsApp Group</span>
+  </button>
+</div>
 
 <button onclick="smoothScroll(document.getElementById('event'), 1000)" class="mt-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 w-full justify-center">
   <i class="fas fa-calendar-alt"></i>
   <span>Lihat Detail Event</span>
 </button>`;
   }
-
   if (lowerMessage.includes('cara main') || 
       lowerMessage.includes('cara login') || 
       lowerMessage.includes('cara bermain') ||
