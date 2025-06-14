@@ -1,8 +1,5 @@
 function initParticles() {
-  // Cek apakah device mobile
   const isMobile = window.innerWidth < 768;
-  
-  // Jika mobile, tidak perlu inisialisasi canvas
   if (isMobile) return;
   
   const canvas = document.getElementById('particles-canvas');
@@ -18,15 +15,13 @@ function initParticles() {
   }
   
   updateCanvasSize();
-  
-  // Throttle resize event
+
   let resizeTimeout;
   window.addEventListener('resize', () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateCanvasSize, 100);
   });
 
-  // Inisialisasi particles dengan ukuran yang lebih kecil untuk mobile
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * canvas.width,
@@ -58,7 +53,7 @@ function initParticles() {
     animationFrameId = requestAnimationFrame(animate);
   }
   
-  // Pause animation when page is not visible
+
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       cancelAnimationFrame(animationFrameId);
@@ -683,7 +678,7 @@ function togglePopup() {
   } else {
     popup.classList.add('active');
     
-    // Tambahkan tombol Newget
+
     const btnContainer = popup.querySelector('.btn-container');
     if (!document.getElementById('newget-btn')) {
       const newgetBtn = document.createElement('button');
@@ -785,7 +780,7 @@ function handleScrollAnimations() {
     rootMargin: '50px'
   });
 
-  // Observe elements yang perlu animasi
+
   document.querySelectorAll('.stat-card, .staff-stats, .connect-card').forEach(el => {
     if (!el.classList.contains('animate')) {
       observer.observe(el);
