@@ -1088,3 +1088,36 @@ nav .flex.items-center.justify-between {
   }
 }
 
+@media (max-width: 1024px) {
+  #mobile-menu-btn {
+    margin-top: 2px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    height: 48px;
+  }
+  .hamburger-menu {
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav .flex.items-center.justify-between {
+    align-items: center !important;
+  }
+  #mobile-menu-btn {
+    margin-top: 4px;
+    margin-bottom: 0;
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .hamburger-menu {
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
