@@ -79,7 +79,6 @@ const closeMobileMenu = document.getElementById('close-mobile-menu');
 function toggleMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
   const isOpen = mobileMenu.classList.contains('translate-y-0');
-  
   if (isOpen) {
     mobileMenu.classList.remove('translate-y-0');
     mobileMenu.classList.add('-translate-y-full');
