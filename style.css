@@ -11,6 +11,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 body {
+  padding-bottom: 80px;
   font-family: "Inter", sans-serif;
   background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a, #164e63);
   background-size: 400% 400%;
@@ -43,6 +44,41 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(45deg, #059669, #047857);
+}
+.social-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 0;
+  z-index: 40;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+.social-tabs a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.social-tabs a i {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.social-tabs a:hover {
+  color: #10b981;
+  transform: translateY(-3px);
 }
 
 .glass {
@@ -1075,9 +1111,9 @@ html {
 @media (max-width: 1023px) {
   #mobile-menu-btn {
     position: fixed;
-    top: 12px;
+    top: 16px;
     right: 16px;
-    z-index: 9999;
+    z-index: 10000;
     display: block !important;
   }
   nav.glass {
