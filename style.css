@@ -736,6 +736,10 @@ html {
   margin-left: 0;
 }
 
+.mobile-menu.translate-y-0 ~ #ai-chat-button {
+  display: none !important;
+}
+
 #open-gallery {
   opacity: 0;
   position: fixed;
@@ -1121,4 +1125,3 @@ html {
     padding-bottom: 0.5rem !important;
   }
 }
-
