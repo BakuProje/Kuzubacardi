@@ -1046,10 +1046,10 @@ Berikut adalah event-event yang tersedia di server kami:
     <div class="mt-3">
       <p class="font-semibold text-emerald-400">Harga Crystal (/exchange):</p>
       <ul class="list-disc pl-5 text-slate-300">
-        <li>Red/Green Crystal: 20 DIAMOND LOCK</li>
-        <li>Blue Crystal: 25 DIAMOND LOCK</li>
-        <li>Black Crystal: 1 BLUE GEM LOCK</li>
-        <li>White Crystal: 2 BLUE GEM LOCK</li>
+        <li>Red/Green Crystal: 50 WORLD LOCK</li>
+        <li>Blue Crystal: 60 WORLD LOCK</li>
+        <li>Black Crystal: 1 DIAMOND LOCK</li>
+        <li>White Crystal: 2 DIAMOND LOCK</li>
       </ul>
     </div>
   </div>
@@ -1067,7 +1067,7 @@ Berikut adalah event-event yang tersedia di server kami:
     <div class="mt-3">
       <p class="font-semibold text-emerald-400">Harga Exchange:</p>
       <ul class="list-disc pl-5 text-slate-300">
-        <li>1 Dreamcatcher Staff: 50 DIAMOND LOCK</li>
+        <li>1 Dreamcatcher Staff: 3 DIAMOND LOCK</li>
       </ul>
     </div>
   </div>
@@ -1130,8 +1130,8 @@ Berikut adalah event-event yang tersedia di server kami:
     <div class="mt-3">
       <p class="font-semibold text-emerald-400">Prize Roulette:</p>
       <ul class="list-disc pl-5 text-slate-300">
-        <li>5 Magplant 15K</li>
-        <li>50-100 Diamond Lock</li>
+        <li>1 Magplant 15K</li>
+        <li>1-3 Diamond Lock</li>
         <li>Random Get Gaia's Beacon</li>
         <li>Random Get Unstable Tesseract</li>
       </ul>
@@ -1145,7 +1145,7 @@ Berikut adalah event-event yang tersedia di server kami:
   <div class="mt-4 space-y-2">
     <p class="text-slate-300">Fossil adalah event pengumpulan Ancient Plant Seed:</p>
     <ul class="list-disc pl-5 text-slate-300 space-y-1">
-      <li>Kumpulkan 30 Ancient Plant Seed = 1 Gnome Coin (/exchange)</li>
+      <li>Kumpulkan 25 Ancient Plant Seed = 1 Gnome Coin (/exchange)</li>
       <li>Kumpulkan 100 Gnome Coin untuk roulette dengan owner</li>
     </ul>
     <div class="mt-3">
@@ -1159,8 +1159,8 @@ Berikut adalah event-event yang tersedia di server kami:
     <div class="mt-3">
       <p class="font-semibold text-emerald-400">Prize Roulette:</p>
       <ul class="list-disc pl-5 text-slate-300">
-        <li>5 Magplant 15K</li>
-        <li>50-150 Diamond Lock</li>
+        <li>1 Magplant 15K</li>
+        <li>1-3 Diamond Lock</li>
         <li>Random Get Gaia's Beacon</li>
         <li>Random Get Unstable Tesseract</li>
       </ul>
