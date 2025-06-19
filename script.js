@@ -179,7 +179,9 @@ btnConnect.addEventListener("click", () => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (!href || href === '#' || href.length < 2) return;
+    const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({
         behavior: 'smooth',
@@ -679,18 +681,7 @@ function togglePopup() {
     popup.classList.add('active');
     
 
-    const btnContainer = popup.querySelector('.btn-container');
-    if (!document.getElementById('newget-btn')) {
-      const newgetBtn = document.createElement('button');
-      newgetBtn.id = 'newget-btn';
-      newgetBtn.className = 'bacardi-host-btn';
-      newgetBtn.innerHTML = `
-        <i class="fas fa-book-open"></i>
-        <span>Newget</span>
-      `;
-      newgetBtn.addEventListener('click', showNewgetPopup);
-      btnContainer.appendChild(newgetBtn);
-    }
+   
   }
 }
 
@@ -1380,4 +1371,146 @@ function downloadHost() {
 document.getElementById('qr-container')?.addEventListener('click', () => {
   const qrImage = document.querySelector('#qr-container img');
   showQRZoom(qrImage.src);
+});
+
+
+function showRolePopup() {
+  document.getElementById('role-popup').classList.remove('hidden');
+}
+
+function hideRolePopup() {
+  document.getElementById('role-popup').classList.add('hidden');
+}
+
+
+function showTitlePopup() {
+  document.getElementById('title-popup').classList.remove('hidden');
+}
+
+function hideTitlePopup() {
+  document.getElementById('title-popup').classList.add('hidden');
+}
+
+function buyRole() {
+  window.location.href = "https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Role%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0ARole%3A%20Mau%20beli%20role%20%3Ccontoh%20role%20Developer%3E&type=phone_number&app_absent=0";
+}
+
+
+function showAssetPopup() {
+  const popup = document.getElementById('asset-popup');
+  popup.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideAssetPopup() {
+  const popup = document.getElementById('asset-popup');
+  popup.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+function showNewgetPopup() {
+  const popup = document.createElement('div');
+  popup.id = 'newget-popup';
+  
+  popup.innerHTML = `
+    <div class="newget-content">
+      <button onclick="hideNewgetPopup()" class="absolute top-4 right-4 text-white hover:text-indigo-400 transition-colors">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <h2 class="text-2xl font-bold text-white mb-4">Newget Tutorial</h2>
+      <img src="./img/newget.png" alt="Newget Tutorial" class="shadow-lg">
+      <div class="flex justify-end mt-4">
+        <button onclick="hideNewgetPopup()" class="px-6 py-2 bg-gradient-to-r from-rose-500 to-red-600 text-white rounded-lg hover:opacity-90 transition-opacity">
+          Close
+        </button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+  document.body.style.overflow = 'hidden';
+}
+
+function hideNewgetPopup() {
+  const popup = document.getElementById('newget-popup');
+  if (popup) {
+    popup.remove();
+    document.body.style.overflow = 'auto';
+  }
+}
+
+
+const rulesData = {
+  market: {
+    id: `<b>RULES MARKET 💸💵</b><br><ol class='list-decimal pl-5 space-y-2'><li>Cantumkan <b>GrowID</b> Anda saat berjualan untuk mencegah penipuan.</li><li>Sertakan <b>harga</b> pada setiap barang yang dijual untuk transparansi.</li><li>Harga <b>LOCK</b> dapat dicek di world <b>TRADE</b> dan bisa berubah sesuai ekonomi server.</li><li>Dilarang <b>memanipulasi harga</b> pasar. Pelanggaran akan dikenakan sanksi.</li></ol><div class='mt-4 text-amber-400 text-sm'>Pelanggaran rules market dapat berakibat hukuman berat!</div>`,
+    en: `<b>MARKET RULES 💸💵</b><br><ol class='list-decimal pl-5 space-y-2'><li>Always include your <b>GrowID</b> when trading to prevent scams.</li><li>Always state the <b>price</b> for each item to ensure transparency.</li><li><b>LOCK</b> prices can be checked in the <b>TRADE</b> world and may change based on server economy.</li><li><b>Price manipulation</b> is strictly prohibited. Violators will be sanctioned.</li></ol><div class='mt-4 text-amber-400 text-sm'>Violating market rules may result in severe punishment!</div>`
+  },
+  player: {
+    id: `<b>RULES IN GAME</b><br><ul class='list-disc pl-5 space-y-2'><li>Tidak diperbolehkan menggunakan lebih dari <b>2 akun</b>.</li><li>Dilarang rasis dalam bentuk apapun (agama/suku).</li><li>Dilarang mengancam player demi keuntungan pribadi.</li><li>Jangan berikan akun Anda ke orang lain.</li><li>Dilarang meniru nama GrowID orang lain untuk menipu.</li><li>Dilarang memanipulasi harga pasar dengan mengubah harga barang secara tidak wajar.</li><li>Dilarang menyebarkan hoax/isu palsu di dalam game.</li><li>Dilarang menjual item in-game menjadi uang asli.</li><li>Dilarang menjual data-data akun Anda.</li><li>Jangan spam chat saat promosi, batasi pesan Anda.</li><li>Dilarang broadcast dengan kata kasar, sindiran, atau memperburuk nama world.</li><li>Dilarang menyebar unsur NSFW di game/server.</li><li>Jangan spam pesan private ke staff/owner, cukup 1-2 pesan.</li><li>Casino diperbolehkan, tapi dilarang menggunakan script curang (teleport, tricker, text palsu, dll).</li><li>Dilarang jual BGL/lock lain di broadcast.</li><li>Jangan buang sampah ke world orang lain, minta staff/owner untuk membersihkan.</li><li>Dilarang memanipulasi player baru demi keuntungan pribadi.</li><li>Dilarang botting dengan akun/IP berbeda.</li></ul>`,
+    en: `<b>IN-GAME RULES</b><br><ul class='list-disc pl-5 space-y-2'><li>Do not use more than <b>2 accounts</b>.</li><li>No racism of any kind (religion/ethnicity).</li><li>No threats to other players for personal gain.</li><li>Never give your account to others.</li><li>Do not impersonate other players' GrowID to scam.</li><li>No price manipulation by changing item prices unfairly.</li><li>No spreading hoaxes or false issues in-game.</li><li>No selling in-game items for real money.</li><li>No selling your account data.</li><li>Do not spam chat when promoting, limit your messages.</li><li>No broadcasting with harsh words, insults, or defaming worlds.</li><li>No NSFW content in-game or on the server.</li><li>Do not spam private messages to staff/owner, 1-2 messages are enough.</li><li>Casino is allowed, but cheating scripts (teleport, tricker, fake text, etc.) are forbidden.</li><li>No selling BGL/other locks via broadcast.</li><li>Do not litter in other players' worlds, ask staff/owner to clean up.</li><li>No manipulating new players for personal gain.</li><li>No botting with different accounts/IPs.</li></ul>`
+  },
+  reme: {
+    id: `<b>RULES REME</b><br><ul class='list-disc pl-5 space-y-2'><li>Max main 10 BGL, lebih dari itu bisa dicurse/ban 1 jam + clear world. Owner yang melanggar: ban 3 jam.</li><li>Setiap main reme (verify/non-verify) wajib direkam untuk keamanan.</li><li>Keuntungan world verif: no max bet, bebas atur max bet selama tidak melebihi modal.</li><li>Jika terjadi tricker/scammer, owner & staff akan turun tangan dan melakukan refund.</li><li>Harga world verif: 20k.</li></ul>`,
+    en: `<b>REME RULES</b><br><ul class='list-disc pl-5 space-y-2'><li>Max play is 10 BGL, more than that may result in curse/ban for 1 hour + world clear. Owner violating: 3 hours ban.</li><li>Every reme game (verify/non-verify) must be recorded for safety.</li><li>Verified world benefit: no max bet, you can set your own max bet as long as it doesn't exceed your capital.</li><li>If tricker/scammer occurs, owner & staff will handle and refund.</li><li>Verified world price: 20k.</li></ul>`
+  },
+  mods: {
+    id: `<b>RULES MODS+</b><br><ul class='list-disc pl-5 space-y-2'><li>Dilarang membuat bentuk tidak pantas (misal: titit) dengan bedrock di world orang.</li><li>Jangan ganggu player yang sedang AFK BFG, AFK fishing, dll. Dilarang menyalahgunakan /ghost.</li><li>Pelanggaran: ban 3 jam & demote 3 hari, setelah itu role bisa di-up lagi.</li><li>Unli block/set dilarang diberikan sembarangan ke player agar ekonomi server stabil. Pelanggaran: demote.</li></ul>`,
+    en: `<b>MODS+ RULES</b><br><ul class='list-disc pl-5 space-y-2'><li>Do not create inappropriate shapes (e.g., genitals) with bedrock in other players' worlds.</li><li>Do not disturb players who are AFK BFG, AFK fishing, etc. Do not abuse /ghost.</li><li>Violation: 3 hours ban & 3 days demote, after that role can be restored.</li><li>Unli block/set must not be given randomly to players to keep the economy stable. Violation: demote.</li></ul>`
+  }
+};
+
+let currentLang = 'id';
+let currentRules = 'market';
+
+function showRulesPopup(type) {
+  currentRules = type;
+  document.getElementById('rules-popup-title').innerText = getRulesTitle(type, 'id') + " / " + getRulesTitle(type, 'en');
+  document.getElementById('rules-popup-body-id').innerHTML = rulesData[type].id;
+  document.getElementById('rules-popup-body-en').innerHTML = rulesData[type].en;
+  document.getElementById('rules-popup').classList.remove('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = 'hidden';
+  showBothLang();
+}
+
+function showIdLang() {
+  document.getElementById('rules-popup-body-id').classList.remove('hide-lang');
+  document.getElementById('rules-popup-body-en').classList.add('hide-lang');
+}
+function showEnLang() {
+  document.getElementById('rules-popup-body-id').classList.add('hide-lang');
+  document.getElementById('rules-popup-body-en').classList.remove('hide-lang');
+}
+function showBothLang() {
+  document.getElementById('rules-popup-body-id').classList.remove('hide-lang');
+  document.getElementById('rules-popup-body-en').classList.remove('hide-lang');
+}
+
+document.getElementById('show-id').onclick = showIdLang;
+document.getElementById('show-en').onclick = showEnLang;
+document.getElementById('show-both').onclick = showBothLang;
+
+function hideRulesPopup() {
+  document.getElementById('rules-popup').classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+}
+
+function getRulesTitle(type, lang) {
+  const titles = {
+    market: { id: 'Rules Market', en: 'Market Rules' },
+    player: { id: 'Rules Player', en: 'Player Rules' },
+    reme: { id: 'Rules Reme', en: 'Reme Rules' },
+    mods: { id: 'Rules Mods', en: 'Mods+ Rules' }
+  };
+  return titles[type][lang];
+}
+
+document.querySelectorAll('.rules-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    showRulesPopup(this.getAttribute('data-rules'));
+  });
+});
+
+document.getElementById('close-rules-popup').addEventListener('click', hideRulesPopup);
+document.getElementById('rules-popup').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('rules-popup')) hideRulesPopup();
 });

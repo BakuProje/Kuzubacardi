@@ -142,12 +142,6 @@
               <span class="font-medium">DONASI</span>
             </a>
           </li>
-          <li class="transform transition-all duration-300 hover:-translate-y-1">
-            <a class="flex items-center gap-3 text-white p-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300" href="#rules">
-              <i class="fas fa-book text-emerald-400"></i>
-              <span class="font-medium">RULES</span>
-            </a>
-          </li>
           </ul>
       </div>
         </div>
@@ -169,12 +163,13 @@
         
         <div class="flex flex-col sm:flex-row gap-4 pt-4 button-animate">
           <a href="https://discord.gg/Z2kybabDg4" target="_blank" rel="noopener noreferrer" 
-             class="btn-modern discord bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center justify-center gap-3">
+             class="btn-modern discord bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300 inline-flex items-center justify-center gap-3">
             <i class="fab fa-discord text-xl text-white group-hover:scale-110 transition-transform"></i>
             DISCORD
           </a>
+          
           <button id="btn-connect" 
-                  class="btn-modern connect bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300 flex items-center justify-center gap-3">
+                  class="btn-modern connect bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3">
             <i class="fas fa-plug group-hover:rotate-12 transition-transform"></i>
             CONNECT
           </button>
@@ -621,39 +616,41 @@
             <h3 class="text-2xl font-bold text-white">Role Price</h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Staff</span>
+                <span class="text-slate-300">Reseller Role</span>
                 <span class="text-emerald-400 font-bold">500k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Reseller</span>
-                <span class="text-emerald-400 font-bold">350k</span>
+                <span class="text-slate-300">Super Developer</span>
+                <span class="text-emerald-400 font-bold">300k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Sdev</span>
+                <span class="text-slate-300">Developer</span>
                 <span class="text-emerald-400 font-bold">200k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Dev</span>
+                <span class="text-slate-300">Moderator</span>
                 <span class="text-emerald-400 font-bold">100k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Mods</span>
-                <span class="text-emerald-400 font-bold">50k</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-slate-300">Crole</span>
-                <span class="text-emerald-400 font-bold">20k</span>
+                <span class="text-slate-300">Cheater & VIP</span>
+                <span class="text-emerald-400 font-bold">30k</span>
               </div>
             </div>
             <div class="pt-4 border-t border-slate-700">
-              <span class="text-xs text-slate-400"></span>
+              <span class="text-xs text-slate-400">* Beberapa role bisa di-upgrade</span>
             </div>
-            <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Role%20%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E&type=phone_number&app_absent=0" 
+            <div class="flex gap-4">
+              <button onclick="showRolePopup()" class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
+                <i class="fas fa-info-circle text-xl group-hover:scale-110 transition-transform"></i>
+                View Details
+              </button>
+              <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Role%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0ARole%3A%20Mau%20beli%20role%20%3Ccontoh%20role%20Developer%3E&type=phone_number&app_absent=0" 
                target="_blank" 
-               class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group">
+                 class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
               <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
               Buy Role
             </a>
+            </div>
           </div>
         </div>
 
@@ -662,114 +659,95 @@
             <h3 class="text-2xl font-bold text-white">Title Price</h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">sup + Ssup</span>
-                <span class="text-blue-400 font-bold">5k</span>
+                <span class="text-slate-300">Legendary Title</span>
+                <span class="text-blue-400 font-bold">50k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Dr Title</span>
-                <span class="text-blue-400 font-bold">5k</span>
+                <span class="text-slate-300">Mentor & Grow4Good</span>
+                <span class="text-blue-400 font-bold">100k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">Grow4Good</span>
-                <span class="text-blue-400 font-bold">8k</span>
+                <span class="text-slate-300">Dr.Title</span>
+                <span class="text-blue-400 font-bold">10k</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-slate-300">mentor</span>
-                <span class="text-blue-400 font-bold">8k</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-slate-300">of legend</span>
-                <span class="text-blue-400 font-bold">5k</span>
+                <span class="text-slate-300">Super Supporter</span>
+                <span class="text-blue-400 font-bold">10k</span>
               </div>
             </div>
             <div class="pt-4 border-t border-slate-700 opacity-0">
               <span class="text-xs text-slate-400">* Staff not for sale</span>
             </div>
-            <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Title%20%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E&type=phone_number&app_absent=0" 
+            <div class="flex gap-4">
+              <button onclick="showTitlePopup()" class="btn-modern bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
+                <i class="fas fa-info-circle text-xl group-hover:scale-110 transition-transform"></i>
+                View Details
+              </button>
+              <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Title%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0ATitle%3A%20mau%20buy%20%3Ccontoh%20dr%20title%3E&type=phone_number&app_absent=0" 
                target="_blank" 
-               class="btn-modern bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group">
+                 class="btn-modern bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
               <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
               Buy Title
             </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="glass rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 hover:scale-105 md:col-span-2">
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white">Asset Price</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Bacardi Lock</span>
+                <span class="text-purple-400 font-bold">20.000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Mythical Magplant</span>
+                <span class="text-purple-400 font-bold">500.000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Legendary Items (x30 Gems)</span>
+                <span class="text-purple-400 font-bold">100.000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-300">Unlimited Stock Block</span>
+                <span class="text-purple-400 font-bold">150.000</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-700">
+              <span class="text-xs text-slate-400">* Harga dapat berubah sewaktu-waktu</span>
+            </div>
+            <div class="flex gap-4">
+              <button onclick="showAssetPopup()" class="btn-modern bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
+                <i class="fas fa-info-circle text-xl group-hover:scale-110 transition-transform"></i>
+                View Details
+              </button>
+              <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Asset%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0AAsset%3A%20mau%20buy%20%3Ccontoh%20magplant%3E&type=phone_number&app_absent=0" 
+                 target="_blank" 
+                 class="btn-modern bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 group flex-1">
+                <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+                Buy Asset
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="rules" class="max-w-7xl mx-auto px-6 py-20">
-      <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Server Rules</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <button onclick="showRulesPopup('market')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-105 group">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <i class="fas fa-store text-3xl text-emerald-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Market Rules</h3>
-            <p class="text-slate-400 text-sm text-center">Panduan dan aturan untuk aktivitas marketplace</p>
-          </div>
-        </button>
-
-        <button onclick="showRulesPopup('player')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 hover:scale-105 group">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <i class="fas fa-users text-3xl text-blue-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Player Rules</h3>
-            <p class="text-slate-400 text-sm text-center">Aturan umum untuk semua pemain</p>
-          </div>
-        </button>
-
-        <button onclick="showRulesPopup('reme')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 hover:scale-105 group">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <i class="fas fa-dice text-3xl text-purple-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Reme Rules</h3>
-            <p class="text-slate-400 text-sm text-center">Peraturan khusus untuk game Reme</p>
-          </div>
-        </button>
-
-        <button onclick="showRulesPopup('mods')" class="glass rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border border-rose-500/20 hover:border-rose-500/40 hover:scale-105 group">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-rose-500/20 to-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <i class="fas fa-shield-alt text-3xl text-rose-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Mods Rules</h3>
-            <p class="text-slate-400 text-sm text-center">Aturan khusus untuk role mods ke atas</p>
-          </div>
-        </button>
+    <section id="rules" class="rules-section max-w-7xl mx-auto px-6 py-20">
+      <div class="rules-header flex flex-col items-center justify-center mb-10">
+        <i class="fas fa-gavel rules-icon mb-2"></i>
+        <h2 class="rules-title text-5xl font-black leading-tight mb-2">Server Rules</h2>
+        <p class="rules-desc text-center text-slate-400 max-w-2xl">BacardiPS memiliki beberapa peraturan penting untuk menjaga kenyamanan dan keamanan komunitas.<br>Pilih kategori rules di bawah ini untuk melihat detailnya.</p>
+      </div>
+      <div class="rules-btn-group flex flex-wrap justify-center gap-6 mb-12">
+        <button class="rules-btn" data-rules="market"><i class="fas fa-store"></i> Market</button>
+        <button class="rules-btn" data-rules="player"><i class="fas fa-user-friends"></i> Player</button>
+        <button class="rules-btn" data-rules="reme"><i class="fas fa-dice"></i> Reme</button>
+        <button class="rules-btn" data-rules="mods"><i class="fas fa-user-shield"></i> Mods</button>
       </div>
     </section>
-
-
-    <div id="rules-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
-      <div class="relative w-full h-full md:h-auto md:max-w-4xl mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-4 md:p-8 shadow-2xl transform scale-95 transition-all duration-300 border border-white/10 overflow-y-auto">
-        <div class="flex items-center justify-between mb-8">
-          <div class="flex items-center gap-4">
-            <div id="rules-icon" class="w-12 h-12 rounded-full bg-gradient-to-r flex items-center justify-center">
-              <i class="fas text-2xl"></i>
-            </div>
-            <h2 id="rules-title" class="text-3xl font-bold text-white"></h2>
-          </div>
-          <button onclick="hideRulesPopup()" class="text-white text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-
-        <div class="flex gap-4 mb-8">
-          <button onclick="switchLanguage('id')" class="flex-1 py-2 rounded-xl bg-emerald-500/20 text-white font-medium hover:bg-emerald-500/40 transition-all" id="btn-id">
-            Bahasa Indonesia
-          </button>
-          <button onclick="switchLanguage('en')" class="flex-1 py-2 rounded-xl bg-slate-500/20 text-white font-medium hover:bg-slate-500/40 transition-all" id="btn-en">
-            English
-          </button>
-        </div>
-
-        <div id="rules-content-id" class="space-y-6 text-slate-300"></div>
-        <div id="rules-content-en" class="space-y-6 text-slate-300 hidden"></div>
-      </div>
-    </div>
 
     <footer class="mt-20 border-t border-slate-800">
       <div class="max-w-7xl mx-auto px-6 py-12">
@@ -923,109 +901,432 @@
         <img src="" alt="QR Code Donasi" class="max-h-[80vh] rounded-xl shadow-2xl"/>
       </div>
     </div>
-  </div>
 
 
-  <div id="copy-notification" class="fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform translate-x-full transition-transform duration-300 z-50">
-    <div class="flex items-center gap-3">
-      <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
-      <span class="text-white font-medium">Teks berhasil disalin!</span>
-    </div>
-  </div>
-
-  <div id="bacardi-host-popup" class="bacardi-host-popup">
-    <div class="bacardi-host-content">
-      <button class="bacardi-host-close" onclick="togglePopup()">
-        <i class="fas fa-times"></i>
-      </button>
-      <h2>Bacardi Host</h2>
-      <div class="btn-container">
-        <a href="#" onclick="downloadHost()" class="bacardi-host-btn">
-          <i class="fas fa-download"></i>
-          Download Vhost
-        </a>
-        <a href="#" onclick="copyText('https://gtpshost.com/BacardiPS-G.txt', 'Power Tunnel')" class="bacardi-host-btn">
-          <i class="fas fa-bolt"></i>
-          Power tunnel
-        </a>
-        <a href="#" onclick="copyText('https://ios.gtpshost.com/BacardiPS-G', 'IOS Host')" class="bacardi-host-btn">
-          <i class="fab fa-apple"></i>
-          IOS Host
-        </a>
-        <a href="#" onclick="toggleAppHost()" class="bacardi-host-btn">
-          <i class="fas fa-mobile-alt"></i>
-          App Host
-        </a>
-        <a href="https://chat.whatsapp.com/JxhEF5k2Jw3KPuB7xZjLAg" target="_blank" class="bacardi-host-btn">
-          <i class="fab fa-whatsapp"></i>
-          Join Group BacardiPS
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div id="appHostModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[9999] hidden items-center justify-center">
-    <div class="bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl relative border border-white/10">
-      <div class="flex items-center justify-between mb-6">
-        <div class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-3">
-          <i class="fas fa-download"></i> Download Host APK
-        </div>
-        <button class="text-white hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300" onclick="toggleAppHost()">
-          <i class="fas fa-times text-xl"></i>
+    <div id="rules-popup" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300">
+      <div class="relative w-full max-w-3xl mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 rules-popup-content flex flex-col items-center">
+        <button id="close-rules-popup" class="absolute top-4 right-4 text-white text-2xl hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300">
+          <i class="fas fa-times"></i>
         </button>
+        <h3 id="rules-popup-title" class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent mb-8 text-center w-full">Rules</h3>
+        <div class="flex flex-col md:flex-row gap-8 w-full rules-columns">
+          <div class="flex-1">
+            <div class="text-lg font-bold mb-2 flex items-center gap-2"><span>🇮🇩</span> Indonesia</div>
+            <div id="rules-popup-body-id" class="text-slate-300 text-base leading-relaxed space-y-4"></div>
+          </div>
+          <div class="flex-1 border-l border-slate-700 pl-0 md:pl-8">
+            <div class="text-lg font-bold mb-2 flex items-center gap-2"><span>🇬🇧</span> English</div>
+            <div id="rules-popup-body-en" class="text-slate-300 text-base leading-relaxed space-y-4"></div>
+          </div>
+        </div>
+        <div class="flex gap-4 mt-8 w-full justify-center rules-btn-row">
+          <button id="show-id" class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-blue-500 shadow-lg transition-all duration-300 text-lg">🇮🇩 Indonesia</button>
+          <button id="show-en" class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-emerald-500 shadow-lg transition-all duration-300 text-lg">🇬🇧 English</button>
+          <button id="show-both" class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg transition-all duration-300 text-lg">🌐 Keduanya</button>
+        </div>
       </div>
-      
-      <div class="space-y-4">
-        <a href="https://sfile.mobi/8XuJpKEqL6W" target="_blank" 
-           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
-          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
-            <img src="https://play-lh.googleusercontent.com/-3C_GP8rFSyU84jrnhrn4O5mPiqPj3XuyNhGh5L8z-G5Wk8snKtYtmZ7R0sCxsmXKGzL=w600-h300-pc0xffffff-pd" 
-                 alt="Virtual Host" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-          </div>
-          <div class="flex-1">
-            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Virtual Host</div>
-            <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
-            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
-              <i class="fas fa-download"></i>
-              <span>Klik untuk download</span>
-            </div>
-          </div>
-        </a>
-        
-        <a href="https://sfile.mobi/2wAFRSHHTOQ" target="_blank" 
-           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
-          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
-            <img src="https://images.sftcdn.net/images/t_app-icon-m/p/0aef4e63-c487-4875-b103-bf30528aaf72/383420525/no-root-hosts-go-logo" 
-                 alt="Hosts GO" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-          </div>
-          <div class="flex-1">
-            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Hosts GO</div>
-            <div class="text-slate-300 text-sm">Cocok Juga Untuk Main GTPS 😎</div>
-            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
-              <i class="fas fa-download"></i>
-              <span>Klik untuk download</span>
-            </div>
-          </div>
-        </a>
+    </div>
 
-        <a href="https://sfile.mobi/1zuFlBKK6Qw" target="_blank" 
-           class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
-          <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
-            <img src="https://raw.githubusercontent.com/krlvm/PowerTunnel/master/.github/images/logo.png" 
-                 alt="Power Tunnel" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+    <div id="copy-notification" class="fixed top-24 right-6 glass px-6 py-4 rounded-xl shadow-xl border border-emerald-500/30 transform translate-x-full transition-transform duration-300 z-50">
+      <div class="flex items-center gap-3">
+        <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+        <span class="text-white font-medium">Teks berhasil disalin!</span>
+      </div>
+    </div>
+
+    <div id="bacardi-host-popup" class="bacardi-host-popup">
+      <div class="bacardi-host-content">
+        <button class="bacardi-host-close" onclick="togglePopup()">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Bacardi Host</h2>
+        <div class="btn-container">
+          <a href="#" onclick="downloadHost()" class="bacardi-host-btn">
+            <i class="fas fa-download"></i>
+            Download Vhost
+          </a>
+          <a href="#" onclick="copyText('https://gtpshost.com/BacardiPS-G.txt', 'Power Tunnel')" class="bacardi-host-btn">
+            <i class="fas fa-bolt"></i>
+            Power tunnel
+          </a>
+          <a href="#" onclick="copyText('https://ios.gtpshost.com/BacardiPS-G', 'IOS Host')" class="bacardi-host-btn">
+            <i class="fab fa-apple"></i>
+            IOS Host
+          </a>
+          <a href="#" onclick="toggleAppHost()" class="bacardi-host-btn">
+            <i class="fas fa-mobile-alt"></i>
+            App Host
+          </a>
+          <a href="https://chat.whatsapp.com/JxhEF5k2Jw3KPuB7xZjLAg" target="_blank" class="bacardi-host-btn">
+            <i class="fab fa-whatsapp"></i>
+            Join Group BacardiPS
+          </a>
+          <a href="#" onclick="showNewgetPopup()" class="bacardi-host-btn newget-btn">
+            <i class="fas fa-book"></i>
+            Newget
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="appHostModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[9999] hidden items-center justify-center">
+      <div class="bg-gradient-to-br from-slate-900/95 to-slate-800/95 rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl relative border border-white/10">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-3">
+            <i class="fas fa-download"></i> Download Host APK
           </div>
-          <div class="flex-1">
-            <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Power Tunnel</div>
-            <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
-            <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
-              <i class="fas fa-download"></i>
-              <span>Klik untuk download</span>
+          <button class="text-white hover:text-emerald-400 transition-colors transform hover:rotate-90 duration-300" onclick="toggleAppHost()">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        
+        <div class="space-y-4">
+          <a href="https://sfile.mobi/8XuJpKEqL6W" target="_blank" 
+             class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+            <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+              <img src="https://play-lh.googleusercontent.com/-3C_GP8rFSyU84jrnhrn4O5mPiqPj3XuyNhGh5L8z-G5Wk8snKtYtmZ7R0sCxsmXKGzL=w600-h300-pc0xffffff-pd" 
+                   alt="Virtual Host" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+            </div>
+            <div class="flex-1">
+              <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Virtual Host</div>
+              <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
+              <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+                <i class="fas fa-download"></i>
+                <span>Klik untuk download</span>
+              </div>
+            </div>
+          </a>
+          
+          <a href="https://sfile.mobi/2wAFRSHHTOQ" target="_blank" 
+             class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+            <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+              <img src="https://images.sftcdn.net/images/t_app-icon-m/p/0aef4e63-c487-4875-b103-bf30528aaf72/383420525/no-root-hosts-go-logo" 
+                   alt="Hosts GO" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+            </div>
+            <div class="flex-1">
+              <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Hosts GO</div>
+              <div class="text-slate-300 text-sm">Cocok Juga Untuk Main GTPS 😎</div>
+              <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+                <i class="fas fa-download"></i>
+                <span>Klik untuk download</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://sfile.mobi/1zuFlBKK6Qw" target="_blank" 
+             class="group flex items-center bg-slate-800/50 rounded-xl p-4 gap-4 hover:bg-slate-700/50 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]">
+            <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-emerald-500/30 group-hover:border-emerald-500/50 transition-all">
+              <img src="https://raw.githubusercontent.com/krlvm/PowerTunnel/master/.github/images/logo.png" 
+                   alt="Power Tunnel" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+            </div>
+            <div class="flex-1">
+              <div class="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Power Tunnel</div>
+              <div class="text-slate-300 text-sm">Rekomendasi Untuk Main GTPS 😎</div>
+              <div class="flex items-center gap-2 mt-2 text-emerald-400/80 text-sm">
+                <i class="fas fa-download"></i>
+                <span>Klik untuk download</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div id="role-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50">
+      <div class="bg-[#0a0d14]/95 max-w-6xl mx-auto mt-10 p-8 rounded-2xl overflow-y-auto max-h-[85vh] border border-cyan-500/20 relative cyber-scroll">
+        <div class="cyber-grid absolute inset-0 opacity-10"></div>
+        
+        <h2 class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text relative z-10">
+          Detail Role Price
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+          <div class="role-card bg-[#0c1016] border border-cyan-500/20 rounded-xl p-6 hover:border-cyan-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-cyan-400">Reseller Role</h3>
+              <span class="price-glow text-lg font-bold">Rp 500.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Role spesial di Discord</li>
+              <li class="feature-item text-slate-300"> Akses ke channel (trusted seller)</li>
+              <li class="feature-item text-slate-300">Role in-game: Sdev, Dev, Mods, VIP, Cheater/li>
+              <li class="feature-item text-slate-300">Akses semua tittle</li>
+              <li class="feature-item text-slate-300">Tidak bisa di-upgrade</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-blue-500/20 rounded-xl p-6 hover:border-blue-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-blue-400">Super Developer</h3>
+              <span class="price-glow text-lg font-bold">Rp 300.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Semua fitur dari Developer, Moderator, VIP, Cheater</li>
+              <li class="feature-item text-slate-300">Akses semua world</li>
+              <li class="feature-item text-slate-300">/warn /sdsb /freezeall</li>
+              <li class="feature-item text-slate-300">/color /p /e</li>
+              <li class="feature-item text-slate-300">/trollnick /vernick</li>
+              <li class="feature-item text-slate-300">/entereffect</li>
+              <li class="feature-item text-slate-300">/kickall</li>
+              <li class="feature-item text-slate-300">Akses cmd /buy block</li>
+              <li class="feature-item text-slate-300">Tidak termasuk unlimited lock</li>
+              <li class="feature-item text-slate-300">Tidak bisa upgrade</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-indigo-500/20 rounded-xl p-6 hover:border-indigo-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-indigo-400">Developer</h3>
+              <span class="price-glow text-lg font-bold">Rp 200.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Dapat semua fitur dari Moderator, VIP, dan Cheater</li>
+              <li class="feature-item text-slate-300"> /block ID</li>
+              <li class="feature-item text-slate-300">/ssb /dsb</li>
+              <li class="feature-item text-slate-300">/curse /mute /unmute /uncurse</li>
+              <li class="feature-item text-slate-300">/pullall /banall</li>
+              <li class="feature-item text-slate-300">/weather /door /fl</li>
+              <li class="feature-item text-slate-300">/1hit /hide</li>
+              <li class="feature-item text-slate-300">/find /warpto</li>
+              <li class="feature-item text-slate-300">Role bisa di-upgrade</li>
+            </ul>
+          </div>
+
+          <div class="role-card bg-[#0c1016] border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-purple-400">Moderator</h3>
+              <span class="price-glow text-lg font-bold">Rp 100.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Dapat role khusus di Discord</li>
+              <li class="feature-item text-slate-300">Termasuk Cheater & VIP Role</li>
+              <li class="feature-item text-slate-300">Nama ungu</li>
+              <li class="feature-item text-slate-300">/invis</li>
+              <li class="feature-item text-slate-300">/nuke & /snuke</li>
+              <li class="feature-item text-slate-300">/info (nick)</li>
+              <li class="feature-item text-slate-300">/togglemods</li>
+              <li class="feature-item text-slate-300">/g text (hanya Guardian+ yang lihat)</li>
+              <li class="feature-item text-slate-300">/magic</li>
+              <li class="feature-item text-slate-300">/ text (khusus mod)</li>
+              <li class="feature-item text-slate-300">/msb (moderator super broadcast)</li>
+              <li class="feature-item text-slate-300">Role bisa di-upgrade</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-red-500/20 rounded-xl p-6 hover:border-red-500/40 transition-all duration-300 md:col-span-2">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-red-400">Cheater & VIP Role</h3>
+              <span class="price-glow text-lg font-bold">Rp 30.000</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-bold text-red-400 mb-3">Fitur Cheater:</h4>
+                <ul class="space-y-2">
+                  <li class="feature-item text-slate-300">Auto Break</li>
+                  <li class="feature-item text-slate-300">Auto Fishing</li>
+                  <li class="feature-item text-slate-300">Antibounce</li>
+                  <li class="feature-item text-slate-300">Super Speed</li>
+                  <li class="feature-item text-slate-300">Double Jump</li>
+                  <li class="feature-item text-slate-300">Super Jump</li>
+                  <li class="feature-item text-slate-300">Heat Resist</li>
+                  <li class="feature-item text-slate-300">Strong Punch</li>
+                  <li class="feature-item text-slate-300">Long Punch</li>
+                  <li class="feature-item text-slate-300">Long Build</li>
+                  <li class="feature-item text-slate-300">Auto Pickup Gems</li>
+                  <li class="feature-item text-slate-300">Fast Pull / Drop / Trash</li>
+                </ul>
+              </div>
+
+
+              <div>
+                <h4 class="text-lg font-bold text-amber-400 mb-3">Fitur VIP:</h4>
+                <ul class="space-y-2">
+                  <li class="feature-item text-slate-300">/tpclick - Teleport ke lokasi klik</li>
+                  <li class="feature-item text-slate-300">/rainbow - Efek pelangi spesial</li>
+                  <li class="feature-item text-slate-300">/valentine - Command valentine eksklusif</li>
+                  <li class="feature-item text-slate-300">/vsb [text] - SB khusus VIP</li>
+                  <li class="feature-item text-slate-300">/v [text] - Chat VIP spesial</li>
+                  <li class="feature-item text-slate-300">Badge VIP khusus</li>
+                  <li class="feature-item text-slate-300">Akses ke world VIP</li>
+                  <li class="feature-item text-slate-300">VIP support prioritas</li>
+                  <li class="feature-item text-slate-300 font-semibold text-amber-400">Role bisa di-upgrade!</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </a>
+        </div>
+
+
+        <div class="flex justify-end gap-4 mt-8 relative z-10">
+          <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Role%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0ARole%3A%20Mau%20beli%20role%20%3Ccontoh%20role%20Developer%3E" 
+             target="_blank" 
+             class="btn-modern bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
+            <i class="fab fa-whatsapp"></i>
+            <span>Beli Role</span>
+          </a>
+          <button onclick="hideRolePopup()" 
+                  class="btn-modern bg-gradient-to-r from-slate-600 to-slate-800 text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="title-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50">
+      <div class="bg-[#0a0d14]/95 max-w-6xl mx-auto mt-10 p-8 rounded-2xl overflow-y-auto max-h-[85vh] border border-pink-500/20 relative cyber-scroll">
+        <div class="cyber-grid absolute inset-0 opacity-10"></div>
+        
+        <h2 class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text relative z-10">
+          Detail Title Price
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+   
+          <div class="role-card bg-[#0c1016] border border-pink-500/20 rounded-xl p-6 hover:border-pink-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-pink-400">Legendary Title</h3>
+              <span class="price-glow text-lg font-bold">Rp 50.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Contoh: Rahman of Legend</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-purple-400">Mentor & Grow4Good</h3>
+              <span class="price-glow text-lg font-bold">Rp 100.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Contoh: [Mentor] Rahman [Gold]</li>
+              <li class="feature-item text-slate-300">Contoh: [G4G] Rahman [G4G Color]</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-blue-500/20 rounded-xl p-6 hover:border-blue-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-blue-400">Dr.Title</h3>
+              <span class="price-glow text-lg font-bold">Rp 10.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Contoh: Dr. Rahman</li>
+            </ul>
+          </div>
+
+
+          <div class="role-card bg-[#0c1016] border border-emerald-500/20 rounded-xl p-6 hover:border-emerald-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-emerald-400">Super Supporter</h3>
+              <span class="price-glow text-lg font-bold">Rp 10.000</span>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Contoh: Rahman (Lebih besar dari non-SSup)</li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="flex justify-end gap-4 mt-8 relative z-10">
+          <a href="https://api.whatsapp.com/send/?phone=6281527641306&text=Halo%20Bang%2C%20saya%20mau%20beli%20Title%20%0AGrowID%3A%20%3Cisi%20GrowID%20kamu%20di%20sini%3E%0ATitle%3A%20mau%20buy%20%3Ccontoh%20dr%20title%3E" 
+             target="_blank" 
+             class="btn-modern bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
+            <i class="fab fa-whatsapp"></i>
+            <span>Beli Title</span>
+          </a>
+          <button onclick="hideTitlePopup()" 
+                  class="btn-modern bg-gradient-to-r from-slate-600 to-slate-800 text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="asset-popup" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50">
+      <div class="bg-[#0a0d14]/95 max-w-6xl mx-auto mt-10 p-8 rounded-2xl overflow-y-auto max-h-[85vh] border border-emerald-500/20 relative cyber-scroll">
+        <div class="cyber-grid absolute inset-0 opacity-10"></div>
+        
+        <h2 class="text-3xl font-bold mb-8 text-transparent bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text relative z-10">
+          Detail Asset Price
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+          <div class="role-card bg-[#0c1016] border border-emerald-500/20 rounded-xl p-6 hover:border-emerald-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-emerald-400">Magplant Series</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Mythical Magplant: <span class="text-emerald-400">Rp 500.000</span></li>
+              <li class="feature-item text-slate-300">Legendary Magplant: <span class="text-emerald-400">Rp 250.000</span></li>
+              <li class="feature-item text-slate-300">Magplant 100K: <span class="text-emerald-400">Rp 100.000</span></li>
+              <li class="feature-item text-slate-300">Magplant 15K: <span class="text-emerald-400">Rp 15.000</span></li>
+              <li class="feature-item text-slate-300">Magplant 5K: <span class="text-emerald-400">Rp 5.000</span></li>
+            </ul>
+          </div>
+
+          <div class="role-card bg-[#0c1016] border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-purple-400">Legendary Items</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Dragon/Wings/Katana/Bot/Whip (x30 Gems): <span class="text-purple-400">Rp 100.000</span></li>
+              <li class="feature-item text-slate-300">Dragon Knight Wing (x50 Gems): <span class="text-purple-400">Rp 150.000</span></li>
+              <li class="feature-item text-slate-300">Owl (x15 Gems): <span class="text-purple-400">Rp 70.000</span></li>
+              <li class="feature-item text-slate-300">Destroyer (x15 Gems): <span class="text-purple-400">Rp 70.000</span></li>
+            </ul>
+          </div>
+
+          <div class="role-card bg-[#0c1016] border border-blue-500/20 rounded-xl p-6 hover:border-blue-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-blue-400">Special Items</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">The Serpent (10 Far + x200): <span class="text-blue-400">Rp 80.000</span></li>
+              <li class="feature-item text-slate-300">Legendary Kitsune (Special Sb /lsb + x100): <span class="text-blue-400">Rp 30.000</span></li>
+              <li class="feature-item text-slate-300">Leonidas Scythe x100 (1 Hit + 3Far): <span class="text-blue-400">Rp 150.000</span></li>
+              <li class="feature-item text-slate-300">Horn of Gluttony (x30 Gems): <span class="text-blue-400">Rp 30.000</span></li>
+              <li class="feature-item text-slate-300">Crown of Steel's (x30 Gems): <span class="text-blue-400">Rp 20.000</span></li>
+            </ul>
+          </div>
+
+          <div class="role-card bg-[#0c1016] border border-amber-500/20 rounded-xl p-6 hover:border-amber-500/40 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-amber-400">Block & Seeds</h3>
+            </div>
+            <ul class="space-y-2">
+              <li class="feature-item text-slate-300">Unlimited Stock Block: <span class="text-amber-400">Rp 150.000</span></li>
+              <li class="feature-item text-slate-300">Restock Block (1.000 Block): <span class="text-amber-400">Rp 3.000</span></li>
+              <li class="feature-item text-slate-300">Restock Seed (1.000 Seed): <span class="text-amber-400">Rp 5.000</span></li>
+              <li class="feature-item text-slate-300">Bacardi Lock: <span class="text-amber-400">Rp 20.000</span></li>
+              <li class="feature-item text-slate-300">Change Name: <span class="text-amber-400">10 Blue Gem Lock</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-4 mt-8 relative z-10">
+          <a href="https://wa.me/6281527641306" target="_blank" 
+             class="btn-modern bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
+            <i class="fab fa-whatsapp"></i>
+            <span>Beli Asset</span>
+          </a>
+          <button onclick="hideAssetPopup()" 
+                  class="btn-modern bg-gradient-to-r from-slate-600 to-slate-800 text-white px-6 py-3 rounded-xl hover:scale-105 transition-transform">
+            Tutup
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1033,5 +1334,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 <script src="script.js"></script>
+  <div class="cyber-lines"></div>
 </body>
 </html>
